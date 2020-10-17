@@ -127,7 +127,7 @@ public class ItemManager : MonoBehaviour
                     spawnItem();
                 }
                 else{
-                    i += Random.Range(1, 10);
+                    //i += Random.Range(1, 10);
                     spawnWeapon();
                 }
         }
