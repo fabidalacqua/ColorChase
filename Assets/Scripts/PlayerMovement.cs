@@ -1,12 +1,9 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
-	#region Serialized Fields
-
 	[SerializeField]
-	private float _moveSpeed = 5f;
+	private float _speed = 5f;
 
 	[SerializeField]
 	private float _jumpForce = 150f;
@@ -17,19 +14,11 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private Transform _groundCheck;
 
-	[SerializeField]
-	private Transform _ceilingCheck;
-
-	[SerializeField]
-	private Animator _animator;
-
-	#endregion
+	public float MoveSpeed { get; private set; }
 
 	#region Private variables
 
 	private Rigidbody2D _rigidbody2D;
-
-	private float _move = 0;
 
 	private bool _facingRight = true;
 
@@ -60,28 +49,18 @@ public class PlayerMovement : MonoBehaviour
 			}
         }
 
-		// TODO: ta funfando mas ta feio isso aqui
-
-		if (_grounded)
-        {
-			_animator.SetBool("IsJumping", false);
-		}
-
-		float x = _move * _moveSpeed;
-		Move(x);
-
-		_animator.SetFloat("Speed", Mathf.Abs(x));
+		Move(MoveSpeed);
 	}
 
-	private void Move(float x)
+	private void Move(float moveSpeed)
 	{
-		_rigidbody2D.velocity = new Vector2(x, _rigidbody2D.velocity.y);
+		_rigidbody2D.velocity = new Vector2(moveSpeed, _rigidbody2D.velocity.y);
 		
-		if (_move > 0 && !_facingRight)
+		if (moveSpeed > 0 && !_facingRight)
 		{
 			Flip();
 		}
-		else if (_move < 0 && _facingRight)
+		else if (moveSpeed < 0 && _facingRight)
 		{
 			Flip();
 		}
@@ -100,17 +79,20 @@ public class PlayerMovement : MonoBehaviour
 
 	public void SetMove(float move)
 	{
-		_move = move;
-
+		MoveSpeed = move * _speed;
 	}
 
-	public void Jump()
+	public bool Jump()
 	{
 		if (_grounded)
 		{
-			_animator.SetBool("IsJumping", true);
 			_grounded = false;
 			_rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
+
+			return true;
 		}
+		return false;
 	}
+
+	// public void Dash()
 }
