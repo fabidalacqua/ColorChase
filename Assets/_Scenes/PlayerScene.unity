@@ -561,6 +561,16 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a6bb8e2c0aa6b4141a631319d06c14d6, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: a42b844c689c95b4d9c40e5a53a8a0c2, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: -6670821879069355233, guid: fb5b5403bb7506b46ad5826c57c5117b, type: 3}
@@ -574,6 +584,16 @@ Tilemap:
     m_Data: {fileID: -4749760856922296949, guid: fb5b5403bb7506b46ad5826c57c5117b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -3018601315452989207, guid: fb5b5403bb7506b46ad5826c57c5117b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 8
     m_Data:
@@ -599,8 +619,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -2, y: -1, z: 0}
-  m_Size: {x: 4, y: 2, z: 1}
+  m_Origin: {x: -28, y: -22, z: 0}
+  m_Size: {x: 93, y: 54, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -878,9 +898,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 0.9212438
+  field of view: 85
+  orthographic: 0
+  orthographic size: 90
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
