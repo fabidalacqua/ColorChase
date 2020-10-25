@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-// TODO: Maybe this is not the better way to do this, but I'll leave just for the prototype
+// TODO: This is not the better way to do this, but I'll leave just for the prototype
 public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField]
@@ -11,29 +11,65 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField]
     private GameObject _daggerPrefab;
 
-    [HideInInspector]
-    public UnityEvent onChangeColor;
-
     private Weapon _weapon;
+
+    public PlayerColor color = PlayerColor.None;
+
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
 
     public void PickWeapon(Weapon weapon)
     {
         _weapon = weapon;
+
+        color = (PlayerColor)_weapon.Color;
+        _spriteRenderer.color = ReturnColor(_weapon.Color);
         // Remove the weapon from gameplay
         _weapon.gameObject.SetActive(false);
     }
 
-    public void ThrowDagger()
+    private Color ReturnColor(char color)
     {
-        if (_weapon.Quantity > 0)
+        switch (color)
         {
-            Instantiate(_daggerPrefab, _throwPoint.position, _throwPoint.rotation);
-            _weapon.Quantity--;
+            case 'b':
+                return Color.blue;
+            case 'p':
+                return new Color(0.49f, 0.0f, 1.0f, 1.0f);
+            case 'r':
+                return Color.red;
+            case 'y':
+                return Color.yellow;
         }
 
-        if (_weapon.Quantity == 0)
+        return Color.white;
+    }
+
+
+    public void ThrowDagger()
+    {
+        if (_weapon != null) 
         {
-            // Remove color
+            if (_weapon.Quantity > 0)
+            {
+                GameObject dagger = Instantiate(_daggerPrefab, _throwPoint.position, _throwPoint.rotation);
+                dagger.GetComponent<Dagger>().ChangeColor( _weapon.Color);
+                _weapon.Quantity--;
+            }
+
+            if (_weapon.Quantity == 0)
+            {
+                // Remove color
+                Destroy(_weapon.gameObject);
+                _weapon = null;
+                color = PlayerColor.None;
+                _spriteRenderer.color = Color.white;
+
+            }
+        }
+        else
+        {
+            Debug.Log(gameObject.name + " does not have a weapon to throw");
         }
     }
 }

@@ -51,6 +51,8 @@ public class PlayerHealth : MonoBehaviour
 
             if (_health <= 0)
             {
+                // This is really bad
+                Destroy(gameObject);
                 onDeath.Invoke();
             }
             else

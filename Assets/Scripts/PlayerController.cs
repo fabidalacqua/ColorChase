@@ -16,12 +16,7 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
 
     [SerializeField]
-    private SpriteRenderer _spriteRenderer;
-
-    [SerializeField]
     private ColorTable _colorTable;
-
-    private PlayerColor _color = PlayerColor.None;
 
     private void FixedUpdate()
     {
@@ -68,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    //TODO: Maybe this is not the better way to do this, but I'll leave just for the prototype
+    //TODO: This is not the better way to do this, but I'll leave just for the prototype
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Jump on head collision
@@ -84,9 +79,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("Weapon"))
         {
-            Debug.Log(gameObject.name + " took damage on the head made by " + collision.name);
+            Debug.Log(gameObject.name + " took damage made by " + collision.name);
             Dagger dagger = collision.gameObject.GetComponent<Dagger>();
-            TakeDamage(_colorTable.GetRelativeDamage((PlayerColor)dagger.color, _color));
+            TakeDamage(_colorTable.GetRelativeDamage((PlayerColor)dagger.color, _weapon.color));
+            Destroy(collision.gameObject);
         }
     }
 

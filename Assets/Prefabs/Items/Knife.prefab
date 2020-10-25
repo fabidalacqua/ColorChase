@@ -97,8 +97,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019121775, y: -0.057215396}
-  m_Size: {x: 3.400823, y: 1.5317879}
+  m_Offset: {x: -0.009387972, y: -0.007515222}
+  m_Size: {x: 0.6211082, y: 0.15516914}
   m_Direction: 1
 --- !u!114 &3619441521180795831
 MonoBehaviour:
@@ -112,6 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb185266ddca3a14fbc01473b278d38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  color: 0
-  quantity: 0
+  name: dagger
+  color: 98
+  quantity: 3
