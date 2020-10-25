@@ -4575,6 +4575,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3268198631656712194, guid: 5b849c1573542e04d91f3f02d50f182a, type: 3}
+      propertyPath: m_AllowJoining
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268198631656712194, guid: 5b849c1573542e04d91f3f02d50f182a, type: 3}
+      propertyPath: m_MaxPlayerCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268198631656712194, guid: 5b849c1573542e04d91f3f02d50f182a, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3268198631656712195, guid: 5b849c1573542e04d91f3f02d50f182a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
