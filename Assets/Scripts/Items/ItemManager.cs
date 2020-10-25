@@ -42,13 +42,13 @@ public class ItemManager : MonoBehaviour
         spawnPositions.Add(new Vector2(-15.34f, -2.69f));
         spawnPositions.Add(new Vector2(-10.45f, 7.34f));
         spawnPositions.Add(new Vector2(-6.37f, -0.72f));
-        spawnPositions.Add(new Vector2(-3.94f, 6.09f));
+        spawnPositions.Add(new Vector2(-3.52f, 6.09f));
         spawnPositions.Add(new Vector2(-2.70f, -0.68f));
         spawnPositions.Add(new Vector2(3.54f, 3.29f));
         spawnPositions.Add(new Vector2(8.52f, 3.19f));
         spawnPositions.Add(new Vector2(12.84f, 7.34f));
         spawnPositions.Add(new Vector2(12.50f, -2.61f));
-        spawnPositions.Add(new Vector2(15.35f, -7.79f));
+        spawnPositions.Add(new Vector2(15.67f, -7.79f));
         spawnPositions.Add(new Vector2(15.67f, -2.69f));
         
         StartCoroutine(itemCoroutine());
