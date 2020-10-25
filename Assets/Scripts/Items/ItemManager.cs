@@ -85,8 +85,8 @@ public class ItemManager : MonoBehaviour
 
         //Spawns weapon in a random position
         //TODO: Define spawn spots in the map
-        float x = Random.Range(-7f, 7f);
-        weapon.transform.position = new Vector2(x, -2.8f);
+        float x = Random.Range(-15f, 15f);
+        weapon.transform.position = new Vector2(x, -8f);
     }
 
     private void spawnItem(){
