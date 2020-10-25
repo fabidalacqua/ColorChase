@@ -20,6 +20,11 @@ public class PlayerWeapon : MonoBehaviour
 
     public void PickWeapon(Weapon weapon)
     {
+        if (_weapon != null)
+        {
+            Destroy(_weapon.gameObject);
+        }
+
         _weapon = weapon;
 
         color = (PlayerColor)_weapon.Color;
