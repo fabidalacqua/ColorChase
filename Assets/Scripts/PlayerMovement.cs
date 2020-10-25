@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,16 +10,15 @@ public class PlayerMovement : MonoBehaviour
 	private float _jumpForce = 150f;
 
 	[SerializeField]
+	private Rigidbody2D _rigidbody2D;
+
+	[SerializeField]
 	private LayerMask _whatIsGround;
 
 	[SerializeField]
 	private Transform _groundCheck;
 
 	public float MoveSpeed { get; private set; }
-
-	#region Private variables
-
-	private Rigidbody2D _rigidbody2D;
 
 	private bool _facingRight = true;
 
@@ -27,12 +27,6 @@ public class PlayerMovement : MonoBehaviour
 	// Whether or not the player is grounded.
 	private bool _grounded;
 
-	#endregion
-
-	private void Awake()
-	{
-		_rigidbody2D = GetComponent<Rigidbody2D>();
-	}
 
     private void FixedUpdate()
 	{
@@ -70,11 +64,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		// Switch the way the player is labelled as facing.
 		_facingRight = !_facingRight;
-
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+		// Rotate
+		transform.Rotate(0f, 180f, 0f);
 	}
 
 	public void SetMove(float move)
@@ -94,5 +85,15 @@ public class PlayerMovement : MonoBehaviour
 		return false;
 	}
 
-	// public void Dash()
+	public bool Dash()
+	{
+		if (_grounded)
+		{
+			_grounded = false;
+			_rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
+
+			return true;
+		}
+		return false;
+	}
 }

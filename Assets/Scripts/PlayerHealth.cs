@@ -9,8 +9,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private float _invulnerableTime = 2f;
 
-    [SerializeField]
-    private UnityEvent onDeath;
+    [HideInInspector]
+    public UnityEvent onDeath;
+
+    // Maybe it is needed to update a ui, or anything
+    [HideInInspector]
+    public UnityEvent onTakeDamage;
 
     private int _health;
 
@@ -37,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage = 1)
     {
         if (_isVulnerable)
         {
@@ -48,6 +52,10 @@ public class PlayerHealth : MonoBehaviour
             if (_health <= 0)
             {
                 onDeath.Invoke();
+            }
+            else
+            {
+                onTakeDamage.Invoke();
             }
         }
     }
