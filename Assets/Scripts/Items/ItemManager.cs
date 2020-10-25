@@ -100,7 +100,6 @@ public class ItemManager : MonoBehaviour
         }
 
         //Spawns weapon in a random position
-        //TODO: Define spawn spots in the map
         int nPos = Random.Range(0, spawnPositions.Count);
         Vector2 pos = spawnPositions[nPos];
         weapon.transform.position = pos;

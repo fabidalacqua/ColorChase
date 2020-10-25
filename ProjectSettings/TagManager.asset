@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Item
   - Weapon
-  - Border
+  - Grid
   layers:
   - Default
   - TransparentFX
