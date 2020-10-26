@@ -16,6 +16,11 @@ public class ColorTable : ScriptableObject
 
     public int GetRelativeDamage(PlayerColor playerColor, PlayerColor targetColor)
     {
+        if (targetColor == PlayerColor.None)
+        {
+            return _relativeDamage;
+        }
+
         foreach (ColorRow row in _colorRows)
         {
             if (row.myColor == playerColor)
@@ -30,6 +35,7 @@ public class ColorTable : ScriptableObject
                 }
             }
         }
+
         return _defaultDamage;
     }
 }

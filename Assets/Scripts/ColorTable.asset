@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ColorTable
   m_EditorClassIdentifier: 
   _defaultDamage: 1
-  _relativeDamage: 3
+  _relativeDamage: 2
   _colorRows:
   - myColor: 114
     kill: 112
