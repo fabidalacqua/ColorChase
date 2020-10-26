@@ -42,9 +42,11 @@ public class ItemManager : MonoBehaviour
         spawnPositions.Add(new Vector2(-15.34f, -2.69f));
         spawnPositions.Add(new Vector2(-10.45f, 7.34f));
         spawnPositions.Add(new Vector2(-6.37f, -0.72f));
+        spawnPositions.Add(new Vector2(-4.65f, -7.79f));
         spawnPositions.Add(new Vector2(-3.52f, 6.09f));
         spawnPositions.Add(new Vector2(-2.70f, -0.68f));
         spawnPositions.Add(new Vector2(3.54f, 3.29f));
+        spawnPositions.Add(new Vector2(5.92f, -7.79f));
         spawnPositions.Add(new Vector2(8.52f, 3.19f));
         spawnPositions.Add(new Vector2(12.84f, 7.34f));
         spawnPositions.Add(new Vector2(12.50f, -2.61f));
@@ -102,7 +104,11 @@ public class ItemManager : MonoBehaviour
         //Spawns weapon in a random position
         int nPos = Random.Range(0, spawnPositions.Count);
         Vector2 pos = spawnPositions[nPos];
-        weapon.transform.position = pos;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, 0.1f);
+        if (colliders.Length > 0)
+            Destroy(weapon);
+        else
+            weapon.transform.position = pos;
     }
 
     private void spawnItem(){
