@@ -185,22 +185,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7f3ad788-6493-4474-9283-ee0fcbd818ab
     m_ActionName: Gameplay/Throw[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: cd4a14c5-7e7f-46f6-8503-2b89fd613a4e
-    m_ActionName: Menu/Quit[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -254,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dc9d43a3c181440bc969eaa76e83df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 3
+  _maxHealth: 2
   _invulnerableTime: 1
   onDeath:
     m_PersistentCalls:
