@@ -14,16 +14,16 @@ public class ColorTable : ScriptableObject
     [SerializeField]
     private List<ColorRow> _colorRows;
 
-    public int GetRelativeDamage(PlayerColor playerColor, PlayerColor targetColor)
+    public int GetRelativeDamage(ColorOption myColor, ColorOption targetColor)
     {
-        if (targetColor == PlayerColor.None)
+        if (targetColor == ColorOption.None)
         {
             return _relativeDamage;
         }
 
         foreach (ColorRow row in _colorRows)
         {
-            if (row.myColor == playerColor)
+            if (row.myColor == myColor)
             {
                 if (row.kill == targetColor)
                 {
@@ -43,16 +43,7 @@ public class ColorTable : ScriptableObject
 [Serializable]
 public class ColorRow
 {
-    public PlayerColor myColor;
-    public PlayerColor kill;
-    public PlayerColor dieFor;
-}
-
-public enum PlayerColor 
-{
-    None = 'n',
-    Red = 'r', 
-    Blue = 'b', 
-    Yellow = 'y', 
-    Purple = 'p' 
+    public ColorOption myColor;
+    public ColorOption kill;
+    public ColorOption dieFor;
 }

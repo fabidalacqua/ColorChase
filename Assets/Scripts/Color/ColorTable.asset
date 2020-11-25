@@ -15,7 +15,7 @@ MonoBehaviour:
   _defaultDamage: 1
   _relativeDamage: 2
   _colorRows:
-  - myColor: 114
+  - myColor: 0
     kill: 112
     dieFor: 98
   - myColor: 98

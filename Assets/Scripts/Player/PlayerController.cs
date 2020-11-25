@@ -75,13 +75,13 @@ public class PlayerController : MonoBehaviour
         else if (collision.CompareTag("Item"))
         {
             Debug.Log("Pick a item");
-            _weapon.PickWeapon(collision.gameObject.GetComponent<Weapon>());
+           // _weapon.PickWeapon(collision.gameObject.GetComponent<Weapon>());
         }
         else if (collision.CompareTag("Weapon"))
         {
             Debug.Log(gameObject.name + " took damage made by " + collision.name);
-            Dagger dagger = collision.gameObject.GetComponent<Dagger>();
-            TakeDamage(_colorTable.GetRelativeDamage((PlayerColor)dagger.color, _weapon.color));
+            //Dagger dagger = collision.gameObject.GetComponent<Dagger>();
+            //TakeDamage(_colorTable.GetRelativeDamage((ColorOption)dagger.color, _weapon.color));
             Destroy(collision.gameObject);
         }
     }

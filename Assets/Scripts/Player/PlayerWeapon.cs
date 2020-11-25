@@ -11,13 +11,13 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField]
     private GameObject _daggerPrefab;
 
-    private Weapon _weapon;
+    //private Weapon _weapon;
 
-    public PlayerColor color = PlayerColor.None;
+    public ColorOption color = ColorOption.None;
 
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
-
+    /*
     public void PickWeapon(Weapon weapon)
     {
         if (_weapon != null)
@@ -31,7 +31,7 @@ public class PlayerWeapon : MonoBehaviour
         _spriteRenderer.color = ReturnColor(_weapon.Color);
         // Remove the weapon from gameplay
         _weapon.gameObject.SetActive(false);
-    }
+    }*/
 
     private Color ReturnColor(char color)
     {
@@ -53,7 +53,7 @@ public class PlayerWeapon : MonoBehaviour
 
     public void ThrowDagger()
     {
-        if (_weapon != null) 
+        /*if (_weapon != null) 
         {
             if (_weapon.Quantity > 0)
             {
@@ -75,6 +75,6 @@ public class PlayerWeapon : MonoBehaviour
         else
         {
             Debug.Log(gameObject.name + " does not have a weapon to throw");
-        }
+        }*/
     }
 }
