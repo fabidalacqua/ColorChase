@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
+	[SerializeField]
+	private Animator _animator;
+
 	[SerializeField]
 	private float _speed = 5f;
 
@@ -18,15 +20,14 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private Transform _groundCheck;
 
-	public float MoveSpeed { get; private set; }
+	private float _moveSpeed;
 
 	private bool _facingRight = true;
 
 	// Radius of the overlap circle to determine if grounded
 	const float _groundedRadius = .05f;
-	// Whether or not the player is grounded.
+	// Whether or not the player is grounded
 	private bool _grounded;
-
 
     private void FixedUpdate()
 	{
@@ -43,13 +44,15 @@ public class PlayerMovement : MonoBehaviour
 			}
         }
 
-		Move(MoveSpeed);
+		Move(_moveSpeed);
 	}
 
 	private void Move(float moveSpeed)
 	{
 		_rigidbody2D.velocity = new Vector2(moveSpeed, _rigidbody2D.velocity.y);
-		
+
+		_animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
+
 		if (moveSpeed > 0 && !_facingRight)
 		{
 			Flip();
@@ -70,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void SetMove(float move)
 	{
-		MoveSpeed = move * _speed;
+		_moveSpeed = move * _speed;
 	}
 
 	public bool Jump()
@@ -78,19 +81,10 @@ public class PlayerMovement : MonoBehaviour
 		if (_grounded)
 		{
 			_grounded = false;
+
 			_rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
 
-			return true;
-		}
-		return false;
-	}
-
-	public bool Dash()
-	{
-		if (_grounded)
-		{
-			_grounded = false;
-			_rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
+			_animator.SetTrigger("IsJumping");
 
 			return true;
 		}

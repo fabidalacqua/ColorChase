@@ -1,20 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    private int _maxHealth = 3;
+    private Animator _animator;
+
+    [SerializeField]
+    private int _maxHealth = 2;
 
     [SerializeField]
     private float _invulnerableTime = 2f;
-
-    [HideInInspector]
-    public UnityEvent onDeath;
-
-    // Maybe it is needed to update a ui, or anything
-    [HideInInspector]
-    public UnityEvent onTakeDamage;
 
     private int _health;
 
@@ -45,19 +40,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_isVulnerable)
         {
-            _health -= damage;
+            _animator.SetTrigger("IsHurt");
 
+            _health -= damage;
             _isVulnerable = false;
 
             if (_health <= 0)
             {
-                // This is really bad
-                Destroy(gameObject);
-                onDeath.Invoke();
-            }
-            else
-            {
-                onTakeDamage.Invoke();
+                _animator.SetTrigger("IsDead");
             }
         }
     }

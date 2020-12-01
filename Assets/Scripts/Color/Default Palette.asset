@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0b739d8784fed24890315b241e16cd7, type: 3}
-  m_Name: Original Palette
+  m_Name: Default Palette
   m_EditorClassIdentifier: 
+  palette: 0
   colors:
   - option: 0
-    color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
   - option: 1
-    color: {r: 0.9803922, g: 0.1137255, b: 0.14117648, a: 0}
+    color: {r: 0.9803922, g: 0.1137255, b: 0.14117648, a: 1}
   - option: 2
-    color: {r: 0.04705883, g: 0.7019608, b: 0.9058824, a: 0}
+    color: {r: 0.04705883, g: 0.7019608, b: 0.9058824, a: 1}
   - option: 3
-    color: {r: 0.9843138, g: 0.8000001, b: 0.03529412, a: 0}
+    color: {r: 0.9843138, g: 0.8000001, b: 0.03529412, a: 1}
   - option: 4
-    color: {r: 0.6901961, g: 0.050980397, b: 0.98823535, a: 0}
+    color: {r: 0.6901961, g: 0.050980397, b: 0.98823535, a: 1}

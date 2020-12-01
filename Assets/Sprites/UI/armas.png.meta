@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 6752164414169962859
     second: _rmas_3
+  - first:
+      213: 8630615561131195372
+    second: armas_0
+  - first:
+      213: 4714487056718736885
+    second: armas_1
+  - first:
+      213: 3290918344438294741
+    second: armas_2
+  - first:
+      213: -7718305920703717862
+    second: armas_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: _rmas_0
+      name: armas_0
       rect:
         serializedVersion: 2
         x: 8
@@ -109,20 +121,20 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f43e947f90388ea0800000000000000
-      internalID: -5870388652862982923
+      spriteID: cebfe2a302b16c770800000000000000
+      internalID: 8630615561131195372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _rmas_1
+      name: armas_1
       rect:
         serializedVersion: 2
         x: 65
@@ -130,20 +142,20 @@ TextureImporter:
         width: 62
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3535152748e2b0d00800000000000000
-      internalID: 939896093625373523
+      spriteID: 5fda5e9eff83d6140800000000000000
+      internalID: 4714487056718736885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _rmas_2
+      name: armas_2
       rect:
         serializedVersion: 2
         x: 0
@@ -151,35 +163,35 @@ TextureImporter:
         width: 64
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1434bcd4aa54aef80800000000000000
-      internalID: -8076566383983639743
+      spriteID: 5d8af095cc0bbad20800000000000000
+      internalID: 3290918344438294741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _rmas_3
+      name: armas_3
       rect:
         serializedVersion: 2
-        x: 73
-        y: 7
-        width: 46
-        height: 51
+        x: 70
+        y: 9
+        width: 51
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6952ab92c184bd50800000000000000
-      internalID: 6752164414169962859
+      spriteID: a1e19a098a113e490800000000000000
+      internalID: -7718305920703717862
       vertices: []
       indices: 
       edges: []

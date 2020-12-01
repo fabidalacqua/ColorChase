@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
-  - Weapon
   - Grid
-  - Border
+  - Projectile
+  - Head
   layers:
   - Default
   - TransparentFX
@@ -18,9 +18,9 @@ TagManager:
   - 
   - 
   - Player
-  - PlayerHead
+  - Head
   - Item
-  - 
+  - Projectile
   - 
   - 
   - 

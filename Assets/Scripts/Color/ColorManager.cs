@@ -7,6 +7,8 @@ public class ColorManager : MonoBehaviour
 
     private ColorPalette _active;
 
+    public ColorTable colorTable;
+
     public static ColorManager Instance { get; private set; }
 
     private void Awake()

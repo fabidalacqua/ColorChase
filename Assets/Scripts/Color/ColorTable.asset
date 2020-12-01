@@ -15,15 +15,15 @@ MonoBehaviour:
   _defaultDamage: 1
   _relativeDamage: 2
   _colorRows:
-  - myColor: 0
-    kill: 112
-    dieFor: 98
-  - myColor: 98
-    kill: 114
-    dieFor: 121
-  - myColor: 121
-    kill: 98
-    dieFor: 112
-  - myColor: 112
-    kill: 121
-    dieFor: 114
+  - myColor: 1
+    kill: 4
+    dieFor: 2
+  - myColor: 2
+    kill: 1
+    dieFor: 3
+  - myColor: 3
+    kill: 2
+    dieFor: 4
+  - myColor: 4
+    kill: 3
+    dieFor: 1

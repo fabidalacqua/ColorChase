@@ -4,20 +4,20 @@
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private ColorOption _colorOption;
-
-    [SerializeField]
     private SpriteRenderer _spriteRenderer;
 
-    public Projectile projectilePrefab;
+    public ColorOption colorOption;
 
     public int numberOfProj = 2;
 
+    public Projectile projectilePrefab;
+
     private void Start()
     {
-        Color color = ColorManager.Instance.GetColor(_colorOption);
-        // Change color for icon and projectile
-        _spriteRenderer.color = color;
-        projectilePrefab.spriteRenderer.color = color;
+        Color color = ColorManager.Instance.GetColor(colorOption);
+        // Set color option for projectile
+        //projectilePrefab.ChangeColor(colorOption, color);
+        // Set color for item
+        //_spriteRenderer.color = color;
     }
 }

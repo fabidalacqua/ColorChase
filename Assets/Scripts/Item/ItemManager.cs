@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: I'm doing this on the assumption that we won't have time to develop buff/debuff items.
 public class ItemManager : MonoBehaviour
 {
     [Tooltip("Time between spawning items")]
     [Range(1f, 10f)]
     public float spawnTime = 3f;
 
-    [Tooltip("Cannot instantiate if spawn point is overlapped by the layers.")]
+    [Tooltip("Cannot instantiate if spawn point is overlapped by gameobject in the layers.")]
     public LayerMask doesntSpawnLayer;
 
     public List<Transform> spawnPoints;
@@ -39,10 +40,13 @@ public class ItemManager : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
-        if (_timer >= spawnTime && HasEmptySpawnPoint())
+        if (_timer >= spawnTime)
         {
             _timer = 0;
-            return true;
+            if (HasEmptySpawnPoint())
+            {
+                return true;
+            }
         }
 
         return false;
@@ -69,7 +73,7 @@ public class ItemManager : MonoBehaviour
     private bool IsSpawnPointValid(Transform point)
     {
         // If there is no item or player overlaping the spawn point
-        if (Physics2D.OverlapPoint(point.position, doesntSpawnLayer) == null)
+        if (point.gameObject.activeSelf && Physics2D.OverlapPoint(point.position, doesntSpawnLayer) == null)
             return true;
 
         return false;
