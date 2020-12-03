@@ -3,6 +3,9 @@
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
+    private GameObject _player;
+
+    [SerializeField]
     private PlayerAnimation _animation;
 
     [SerializeField]
@@ -47,7 +50,8 @@ public class PlayerHealth : MonoBehaviour
 
             if (_health <= 0)
             {
-                Debug.Log("Is Dead");
+                // Gambiarra? Maybe.
+                Destroy(_player);
             }
         }
     }

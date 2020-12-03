@@ -9,7 +9,16 @@ public class PlayerMovement : MonoBehaviour
 	private float _speed = 5f;
 
 	[SerializeField]
-	private float _jumpForce = 150f;
+	private float _jumpForce = 100f;
+
+	[SerializeField]
+	private Vector2 _wallJumpForce = new Vector2(5, 10);
+
+	[SerializeField]
+	private Vector2 _avoidForce = new Vector2(5, 10);
+
+	[SerializeField]
+	private float _canMoveTimer = .5f;
 
 	[SerializeField]
 	private Rigidbody2D _rigidbody2D;
@@ -20,31 +29,47 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private Transform _groundCheck;
 
+	[SerializeField]
+	private Transform _wallCheck;
+
 	private float _moveSpeed;
 
 	private bool _facingRight = true;
 
-	// Radius of the overlap circle to determine if grounded
 	const float _groundedRadius = .05f;
-	// Whether or not the player is grounded
+
 	private bool _grounded;
 
-    private void FixedUpdate()
-	{
-		_grounded = false;
+	private bool _wall;
 
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(_groundCheck.position, _groundedRadius, _whatIsGround);
+	private bool _canMove = true;
+
+	private void FixedUpdate()
+	{
+		// Check if the player is grounded
+		_grounded = HasOverlapedColliders(_groundCheck);
+		_wall = false;
+		if (!_grounded)
+		{
+			// Check if player is touching a wall if it is not grounded
+			_wall = HasOverlapedColliders(_wallCheck);
+		}
+
+		if (_canMove)
+			Move(_moveSpeed);
+	}
+
+	private bool HasOverlapedColliders(Transform transform)
+    {
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _groundedRadius, _whatIsGround);
 		for (int i = 0; i < colliders.Length; i++)
 		{
 			if (colliders[i].gameObject != gameObject)
 			{
-				_grounded = true;
+				return true;
 			}
-        }
-
-		Move(_moveSpeed);
+		}
+		return false;
 	}
 
 	private void Move(float moveSpeed)
@@ -71,12 +96,25 @@ public class PlayerMovement : MonoBehaviour
 		transform.Rotate(0f, 180f, 0f);
 	}
 
+	private void SetCanMoveToTrue()
+	{
+		_canMove = true;
+	}
+
 	public void SetMove(float move)
 	{
 		_moveSpeed = move * _speed;
 	}
 
-	public bool Jump()
+	public void Avoid()
+    {
+		_canMove = false;
+		Invoke("SetCanMoveToTrue", _canMoveTimer);
+
+		_rigidbody2D.AddForce(_avoidForce * new Vector2(_facingRight ? -1 : 1, 1f), ForceMode2D.Impulse);
+	}
+
+	public void Jump()
 	{
 		if (_grounded)
 		{
@@ -85,9 +123,18 @@ public class PlayerMovement : MonoBehaviour
 			_rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
 
 			_animation.Jump();
-
-			return true;
 		}
-		return false;
+		else if (_wall)
+		{
+			_wall = false;
+
+			_canMove = false;
+			Invoke("SetCanMoveToTrue", _canMoveTimer);
+
+			_rigidbody2D.AddForce(_wallJumpForce * new Vector2(_facingRight ? -1 : 1, 1f), ForceMode2D.Impulse);
+
+			//TODO: dash like animation
+			//_animation.Jump();
+		}
 	}
 }

@@ -38,26 +38,35 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     private void OnTriggerEnter2D(Collider2D collision)
-    { 
-        if (collision.CompareTag("Player"))
+    {
+        switch (collision.tag)
         {
-            Debug.Log(gameObject.name + " took damage on the head made by " + collision.name);
-            // Jump on head collision
-            _playerHealth.TakeDamage();
+            case "Player":
+                TakeDamage();
+                break;
+            case "Projectile":
+                TakeDamage(collision);
+                break;
+            case "Head":
+                _playerMovement.Avoid();
+                break;
+            case "Item":
+                _playerItem.PickUp(collision.gameObject.GetComponent<Item>());
+                break;
         }
-        else if (collision.CompareTag("Item"))
-        {
-            _playerItem.PickUp(collision.gameObject.GetComponent<Item>());
-        }
-        else if (collision.CompareTag("Projectile"))
-        {
-            Debug.Log(gameObject.name + " took damage made by " + collision.name);
+    }
 
+    private void TakeDamage(Collider2D collision = null)
+    {
+        if (collision != null) // Projectile collision
+        {
             Projectile projectile = collision.gameObject.GetComponent<Projectile>();
             int damage = projectile.GetRelativeDamage(_playerItem.ColorOption);
             Destroy(collision.gameObject);
 
             _playerHealth.TakeDamage(damage);
         }
+        else // Jump on head
+            _playerHealth.TakeDamage();
     }
 }

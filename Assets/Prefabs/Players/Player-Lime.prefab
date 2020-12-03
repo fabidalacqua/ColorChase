@@ -59,6 +59,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player-Lime
       objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190061, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: _avoidForce.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190061, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: _avoidForce.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190061, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: _wallJumpForce.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190061, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: _wallJumpForce.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 487302711075079247, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -79,13 +95,21 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7300894527021040541, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300894527021040541, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.026
+      objectReference: {fileID: 0}
     - target: {fileID: 7488365752313631134, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Size.x
       value: 0.5237166
       objectReference: {fileID: 0}
     - target: {fileID: 7488365752313631134, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Size.y
-      value: 0.7376656
+      value: 0.72828084
       objectReference: {fileID: 0}
     - target: {fileID: 7488365752313631134, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Offset.x
@@ -93,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7488365752313631134, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Offset.y
-      value: -0.11128216
+      value: -0.11597452
       objectReference: {fileID: 0}
     - target: {fileID: 8184595516420286395, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Controller
