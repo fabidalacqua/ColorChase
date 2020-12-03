@@ -2,9 +2,8 @@
 
 public class PlayerItem : MonoBehaviour
 {
-    // TODO: Animations for throwing/picking up item
     [SerializeField]
-    private Animator _animator;
+    private PlayerAnimation _animation;
 
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
@@ -61,6 +60,8 @@ public class PlayerItem : MonoBehaviour
         {
             if (_item.numberOfProj > 0)
             {
+                _animation.Throw();
+
                 Instantiate(_item.projectilePrefab, transform.position, transform.rotation);
 
                 _item.numberOfProj--;

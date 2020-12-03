@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField]
-	private Animator _animator;
+	private PlayerAnimation _animation;
 
 	[SerializeField]
 	private float _speed = 5f;
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		_rigidbody2D.velocity = new Vector2(moveSpeed, _rigidbody2D.velocity.y);
 
-		_animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
+		_animation.Walk(moveSpeed);
 
 		if (moveSpeed > 0 && !_facingRight)
 		{
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
 			_rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
 
-			_animator.SetTrigger("IsJumping");
+			_animation.Jump();
 
 			return true;
 		}

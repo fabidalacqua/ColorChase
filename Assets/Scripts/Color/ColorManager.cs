@@ -16,16 +16,13 @@ public class ColorManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+
+            _active = _default;
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        _active = _default;
     }
 
     //TODO: Reload scene to change all colors (made this way thinking in a dropdown value)

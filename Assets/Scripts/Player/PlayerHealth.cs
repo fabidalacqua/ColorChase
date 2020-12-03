@@ -3,7 +3,7 @@
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    private Animator _animator;
+    private PlayerAnimation _animation;
 
     [SerializeField]
     private int _maxHealth = 2;
@@ -40,14 +40,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_isVulnerable)
         {
-            _animator.SetTrigger("IsHurt");
+            _animation.Hurt();
 
             _health -= damage;
             _isVulnerable = false;
 
             if (_health <= 0)
             {
-                _animator.SetTrigger("IsDead");
+                Debug.Log("Is Dead");
             }
         }
     }
