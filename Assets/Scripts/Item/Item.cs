@@ -12,6 +12,13 @@ public class Item : MonoBehaviour
 
     public Projectile projectilePrefab;
 
+    public Sprite Sprite { get; private set; }
+
+    private void Awake()
+    {
+        Sprite = _spriteRenderer.sprite;
+    }
+
     private void Start()
     {
         Color color = ColorManager.Instance.GetColor(colorOption);

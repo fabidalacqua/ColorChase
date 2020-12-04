@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877997207758986310}
+  - component: {fileID: 7121367679550499598}
   m_Layer: 5
   m_Name: Player Score
   m_TagString: Untagged
@@ -37,6 +38,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 109}
   m_SizeDelta: {x: 450, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7121367679550499598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877997207758986311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cac7ded34d544e82a58bdb76c894b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wonRound: {fileID: -8918113564303062011, guid: ac8502cd6e358704aa9fd582a07ca4fd, type: 3}
+  _rounds:
+  - {fileID: 877997208489784506}
+  - {fileID: 877997208324577513}
+  - {fileID: 877997209698909120}
+  - {fileID: 877997209635617163}
 --- !u!1 &877997207958823552
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +132,7 @@ GameObject:
   - component: {fileID: 877997208324577512}
   - component: {fileID: 877997208324577513}
   m_Layer: 5
-  m_Name: Match 2
+  m_Name: Round 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +207,7 @@ GameObject:
   - component: {fileID: 877997208489784501}
   - component: {fileID: 877997208489784506}
   m_Layer: 5
-  m_Name: Match 1
+  m_Name: Round 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,7 +416,7 @@ GameObject:
   - component: {fileID: 877997209635617162}
   - component: {fileID: 877997209635617163}
   m_Layer: 5
-  m_Name: Match 4
+  m_Name: Round 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +491,7 @@ GameObject:
   - component: {fileID: 877997209698909123}
   - component: {fileID: 877997209698909120}
   m_Layer: 5
-  m_Name: Match 3
+  m_Name: Round 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

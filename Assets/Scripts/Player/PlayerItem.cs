@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerItem : MonoBehaviour
 {
@@ -8,7 +9,16 @@ public class PlayerItem : MonoBehaviour
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
 
-    private Item _item = null;
+    [SerializeField]
+    private Transform _throwPoint;
+
+    [HideInInspector]
+    public UnityEvent onPickUp;
+
+    [HideInInspector]
+    public UnityEvent onThrow;
+
+    public Item Item { get; private set; }
 
     // Just to not bug the pick up function 
     private readonly float _coolDown = 1f;
@@ -23,6 +33,8 @@ public class PlayerItem : MonoBehaviour
     {
         ColorOption = ColorOption.None;
         ChangePlayerColor(ColorOption);
+
+        Item = null;
     }
 
     private void Update()
@@ -39,36 +51,42 @@ public class PlayerItem : MonoBehaviour
             _canPickUp = false;
             _timer = 0f;
 
-            if (_item != null)
+            if (Item != null)
             {
                 // Just destroy item when player pick up another
                 // (avoiding calling Destroy function too often)
-                Destroy(_item.gameObject);
-                _item = null;
+                Destroy(Item.gameObject);
+                Item = null;
             }
 
-            _item = item;
-            _item.gameObject.SetActive(false);
+            Item = item;
+            Item.gameObject.SetActive(false);
 
-            ChangePlayerColor(_item.colorOption);
+            ChangePlayerColor(Item.colorOption);
+
+            if (onPickUp != null)
+                onPickUp.Invoke();
         }
     }
 
     public void Throw()
     {
-        if (_item != null)
+        if (Item != null)
         {
-            if (_item.numberOfProj > 0)
+            if (Item.numberOfProj > 0)
             {
                 _animation.Throw();
 
-                Instantiate(_item.projectilePrefab, transform.position, transform.rotation);
+                Instantiate(Item.projectilePrefab, _throwPoint.position, _throwPoint.rotation);
 
-                _item.numberOfProj--;
-                if (_item.numberOfProj == 0)
+                Item.numberOfProj--;
+                if (Item.numberOfProj == 0)
                 {
                     ChangePlayerColor(ColorOption.None);
                 }
+
+                if (onThrow != null)
+                    onThrow.Invoke();
             }
         }
     }

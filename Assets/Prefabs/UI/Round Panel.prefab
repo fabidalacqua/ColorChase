@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4728892647975767843}
   - component: {fileID: 4728892647975767869}
   m_Layer: 5
-  m_Name: End Of Match Panel
+  m_Name: Round Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
