@@ -9,7 +9,7 @@ public class ColorTable : ScriptableObject
     private int _defaultDamage = 1;
 
     [SerializeField]
-    private int _relativeDamage = 3;
+    private int _relativeDamage = 2;
 
     [SerializeField]
     private List<ColorRow> _colorRows;
@@ -18,7 +18,7 @@ public class ColorTable : ScriptableObject
     {
         if (targetColor == ColorOption.None)
         {
-            return _relativeDamage;
+            return _defaultDamage;
         }
 
         foreach (ColorRow row in _colorRows)

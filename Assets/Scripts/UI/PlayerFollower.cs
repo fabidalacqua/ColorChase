@@ -27,8 +27,8 @@ public class PlayerFollower : MonoBehaviour
     private void Start()
     {
         // Listeners for pick and throwing item
-        _playerItem.onPickUp.AddListener(PickUp);
-        _playerItem.onThrow.AddListener(Throw);
+        _playerItem.OnPickUp.AddListener(PickUp);
+        _playerItem.OnThrow.AddListener(Throw);
     }
 
     void Update()
@@ -40,6 +40,7 @@ public class PlayerFollower : MonoBehaviour
 
     private void Throw()
     {
+        // Set active false to used item
         for (int i = 0; i < _items.Length; i++)
         {
             if (i >= _playerItem.Item.numberOfProj)
@@ -50,7 +51,7 @@ public class PlayerFollower : MonoBehaviour
 
     private void PickUp()
     {
-        // Set sprites for items ui and set active true
+        // Set sprites for picked up item and set active true
         foreach (Image i in _items)
         {
             i.sprite = _playerItem.Item.Sprite;

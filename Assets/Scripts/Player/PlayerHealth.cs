@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -19,6 +20,16 @@ public class PlayerHealth : MonoBehaviour
     private bool _isVulnerable = true;
 
     private float _timer = 0;
+
+    public IntUnityEvent OnTakeDamage { get; private set; }
+
+    public UnityEvent OnDied { get; private set; }
+
+    private void Awake()
+    {
+        OnTakeDamage = new IntUnityEvent();
+        OnDied = new UnityEvent();
+    }
 
     private void Start()
     {
@@ -48,10 +59,15 @@ public class PlayerHealth : MonoBehaviour
             _health -= damage;
             _isVulnerable = false;
 
+            if (OnTakeDamage != null)
+                OnTakeDamage.Invoke(_health);
+
             if (_health <= 0)
             {
-                // Gambiarra? Maybe.
-                Destroy(_player);
+                _player.SetActive(false);
+
+                if (OnDied != null)
+                    OnDied.Invoke();
             }
         }
     }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+public class ColorUnityEvent : UnityEvent<Color> { }
+
 public class PlayerItem : MonoBehaviour
 {
     [SerializeField]
@@ -12,14 +14,6 @@ public class PlayerItem : MonoBehaviour
     [SerializeField]
     private Transform _throwPoint;
 
-    [HideInInspector]
-    public UnityEvent onPickUp;
-
-    [HideInInspector]
-    public UnityEvent onThrow;
-
-    public Item Item { get; private set; }
-
     // Just to not bug the pick up function 
     private readonly float _coolDown = 1f;
 
@@ -27,14 +21,29 @@ public class PlayerItem : MonoBehaviour
 
     private bool _canPickUp = false;
 
+    public UnityEvent OnPickUp { get; private set; }
+
+    public UnityEvent OnThrow { get; private set; }
+
+    public Item Item { get; private set; }
+
     public ColorOption ColorOption { get; private set; }
 
-    public void Start()
-    {
-        ColorOption = ColorOption.None;
-        ChangePlayerColor(ColorOption);
+    public ColorUnityEvent OnChangeColor { get; private set; }
 
+    private void Awake()
+    {
+        OnPickUp = new UnityEvent();
+        OnThrow = new UnityEvent();
+
+        OnChangeColor = new ColorUnityEvent();
+        ColorOption = ColorOption.None;
         Item = null;
+    }
+
+    private void Start()
+    {
+        ChangePlayerColor(ColorOption);  
     }
 
     private void Update()
@@ -64,8 +73,8 @@ public class PlayerItem : MonoBehaviour
 
             ChangePlayerColor(Item.colorOption);
 
-            if (onPickUp != null)
-                onPickUp.Invoke();
+            if (OnPickUp != null)
+                OnPickUp.Invoke();
         }
     }
 
@@ -85,8 +94,8 @@ public class PlayerItem : MonoBehaviour
                     ChangePlayerColor(ColorOption.None);
                 }
 
-                if (onThrow != null)
-                    onThrow.Invoke();
+                if (OnThrow != null)
+                    OnThrow.Invoke();
             }
         }
     }
@@ -94,6 +103,10 @@ public class PlayerItem : MonoBehaviour
     private void ChangePlayerColor(ColorOption colorOption)
     {
         ColorOption = colorOption;
-        _spriteRenderer.color = ColorManager.Instance.GetColor(ColorOption);
+        Color color = ColorManager.Instance.GetColor(ColorOption);
+        _spriteRenderer.color = color;
+
+        if (OnChangeColor != null)
+            OnChangeColor.Invoke(color);
     }
 }

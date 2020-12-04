@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+
+public class IntUnityEvent : UnityEvent<int> {}
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +14,35 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private PlayerItem _playerItem;
+
+    public bool[] Victories { get; private set; }
+
+    [HideInInspector]
+    public IntUnityEvent OnWonRound { get; private set; }
+
+    [HideInInspector]
+    public UnityEvent OnScoreVictory { get; private set; }
+
+    private void Awake()
+    {
+        Victories = new bool[] { false, false, false, false };
+
+        OnWonRound = new IntUnityEvent();
+        OnScoreVictory = new UnityEvent();
+    }
+
+    private void Start()
+    {
+        OnWonRound.AddListener(ScoreVictory);
+    }
+
+    private void ScoreVictory(int roundIndex)
+    {
+        Victories[roundIndex] = true;
+
+        if (OnScoreVictory != null)
+            OnScoreVictory.Invoke();
+    }
 
     #region Input Handler
 
@@ -37,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region Collision
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.tag)
@@ -69,4 +103,6 @@ public class PlayerController : MonoBehaviour
         else // Jump on head
             _playerHealth.TakeDamage();
     }
+
+    #endregion
 }
