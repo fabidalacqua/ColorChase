@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
 			_rigidbody2D.AddForce(_wallJumpForce * new Vector2(_facingRight ? -1 : 1, 1f), ForceMode2D.Impulse);
 
-			//TODO: dash like animation
+			//TODO: Dash like animation
 			//_animation.Jump();
 		}
 	}

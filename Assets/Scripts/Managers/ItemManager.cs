@@ -34,8 +34,8 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    //TODO: A wild feature/bug appeared. If all spawn point are overlaped, soon as a item is picked up,
-    //      another will spawn at the same point.
+    //TODO: A wild feature/bug appeared. If all spawn point are overlaped, 
+    //      soon as a item is picked up, another will spawn at the same point.
     private bool CanSpawn()
     {
         _timer += Time.deltaTime;
