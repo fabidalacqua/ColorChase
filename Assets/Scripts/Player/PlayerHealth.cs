@@ -64,8 +64,6 @@ public class PlayerHealth : MonoBehaviour
 
             if (_health <= 0)
             {
-                _player.SetActive(false);
-
                 if (OnDied != null)
                     OnDied.Invoke();
             }
