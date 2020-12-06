@@ -18,7 +18,19 @@ public class MultiplayerManager : MonoBehaviour
     private PlayerScore[] _playersScores;
 
     [SerializeField]
+    private Transform[] _spawnPoints;
+
+    [SerializeField]
     private Countdown _countdown;
+
+    [SerializeField]
+    private GameObject _endRoundPanel;
+
+    [SerializeField]
+    private WinnerPanel _winnerPanel;
+
+    [SerializeField]
+    private float _numberRounds = 4;
 
     private PlayerInputManager _playerInputManager;
 
@@ -28,10 +40,18 @@ public class MultiplayerManager : MonoBehaviour
 
     private List<PlayerInput> _playersInputs;
 
+    // Tiebreaker variables
+    private bool _tiebreaker = false;
+
+    List<PlayerInput> _tiebreakerPlayers;
+
     private void Awake()
-    {
-        _playersInputs = new List<PlayerInput>();
+    {   
         _playerInputManager = GetComponent<PlayerInputManager>();
+
+        _playersInputs = new List<PlayerInput>();
+
+        _tiebreakerPlayers = new List<PlayerInput>();
     }
 
     private void Start()
@@ -74,9 +94,18 @@ public class MultiplayerManager : MonoBehaviour
 
     private void ActivatePlayers()
     {
-        // Activate all players input
-        foreach (PlayerInput p in _playersInputs)
+        if (!_tiebreaker)
+            ActivatePlayers(_playersInputs);
+        else // Is a tiebreaker round
+            ActivatePlayers(_tiebreakerPlayers);
+    }
+
+    private void ActivatePlayers(List<PlayerInput> playerInputs)
+    {
+        foreach (PlayerInput p in playerInputs)
         {
+            // Place player in position
+            p.gameObject.transform.position = _spawnPoints[p.playerIndex].position;
             p.gameObject.SetActive(true);
             p.ActivateInput();
         }
@@ -108,22 +137,88 @@ public class MultiplayerManager : MonoBehaviour
 
     private void EndRound()
     {
+        PlayerInput curWinner = null;
         foreach (PlayerInput p in _playersInputs)
         {
             // Find the player who won the round
             if (p.gameObject.activeInHierarchy)
             {
                 p.GetComponent<PlayerController>().OnWonRound.Invoke(_curRound);
+                // Set round winner (used in tiebreaker)
+                curWinner = p;
             }
         }
 
         DeactivatePlayers();
+
+        if (!_tiebreaker)
+            _endRoundPanel.SetActive(true);
+        else
+            _winnerPanel.SetWinner(curWinner.gameObject, curWinner.playerIndex + 1);
     }
 
+    //TODO: With end round panel active, any player must press A to continue
     public void StartRound()
     {
-        _curRound++;
-        _countdown.Begin(6);
+        if (!_tiebreaker)
+        {
+            _curRound++;
+            if (_curRound <= _numberRounds)
+                _countdown.Begin(6);
+            else
+                EndGame();
+        }
+        else // Tiebreaker round
+        {
+            _countdown.Begin(6);
+        }
+    }
+
+    private void EndGame()
+    {
+       PlayerInput winner =  GetWinner();
+
+        if (winner != null)
+        {
+            _winnerPanel.SetWinner(winner.gameObject, winner.playerIndex+1);
+        }
+        else // Null winner means tiebreaker round
+        {
+            // Start last round
+            StartRound();
+        }
+    }
+
+    private PlayerInput GetWinner()
+    {
+        PlayerInput winner = null;
+
+        int victories, maxVictories = -1;
+
+        // Check who won or if need a tiebreaker
+        foreach (PlayerInput p in _playersInputs)
+        {
+            victories = p.GetComponent<PlayerController>().VictoriesCount;
+            if (victories > maxVictories)
+            {
+                // Set winner 
+                maxVictories = victories;
+                winner = p;
+
+                _tiebreaker = false;
+                // Add player for a possible tiebreaker
+                _tiebreakerPlayers.Add(p);
+            }
+            else if (victories == maxVictories)
+            {
+                winner = null;
+
+                _tiebreaker = true;
+                _tiebreakerPlayers.Add(p);
+            }
+        }
+
+        return winner;
     }
 
     public void OnPlayerJoined(PlayerInput player)
