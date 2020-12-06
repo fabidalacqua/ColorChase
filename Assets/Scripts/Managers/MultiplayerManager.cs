@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInputManager))]
@@ -21,10 +22,15 @@ public class MultiplayerManager : MonoBehaviour
 
     private PlayerInputManager _playerInputManager;
 
-    private int _playerCount = 4;
+    private int _playerCount = 0;
+
+    private int _curRound = 0;
+
+    private List<PlayerInput> _playersInputs;
 
     private void Awake()
     {
+        _playersInputs = new List<PlayerInput>();
         _playerInputManager = GetComponent<PlayerInputManager>();
     }
 
@@ -42,52 +48,55 @@ public class MultiplayerManager : MonoBehaviour
 
     private void InstantiatePlayersWithSetDevices()
     {
-        /*NumberOfPlayers = PlayerPrefs.GetInt("Number of Players");
-        PlayerInputManager manager = GetComponent<PlayerInputManager>();
+        // Get the number of players joined in selection screen
+        int NumberPlayers = PlayerPrefs.GetInt("number_players");
         string devicePath = null;
         string controlScheme = null;
-        for (int i = 0; i < NumberOfPlayers; i++)
+
+        for (int i = 0; i < NumberPlayers; i++)
         {
-            if ((devicePath = PlayerPrefs.GetString($"Player_{i}_device", null)) != null && (controlScheme = PlayerPrefs.GetString($"Player_{i}_controlScheme", null)) != null)
+            devicePath = PlayerPrefs.GetString("player_" + i + "_device", null);
+            controlScheme = PlayerPrefs.GetString("player_" + i + "_controlScheme", null);
+            
+            if (devicePath != null && controlScheme != null)
             {
-                int element = PlayerPrefs.GetInt($"Player_{i}_element", 0);
-                manager.playerPrefab = PlayerPrefabs[element];
-                _players.Add(manager.JoinPlayer(element, pairWithDevice: InputSystem.GetDevice(devicePath), controlScheme: controlScheme));
+                // Get character prefab for player
+                int character = PlayerPrefs.GetInt($"player_{i}_character");
+                _playerInputManager.playerPrefab = _playersPrefabs[character];
+
+                // Instantiate player with device
+                PlayerInput playerInput = _playerInputManager.JoinPlayer(i,
+                    pairWithDevice: InputSystem.GetDevice(devicePath), controlScheme: controlScheme);
+                _playersInputs.Add(playerInput); 
             }
         }
-        */
     }
 
     private void ActivatePlayers()
     {
-        /*
-        foreach (PlayerInput player in _players)
+        // Activate all players input
+        foreach (PlayerInput p in _playersInputs)
         {
-            player.SetActive(true);
-            player.ActivateInput();
-        }*/
+            p.gameObject.SetActive(true);
+            p.ActivateInput();
+        }
     }
 
-    //TODO: Need to execute this when some player die
-    // Need to identify player index
-    private void DeactivatePlayers(int index = -1)
+    private void DeactivatePlayers()
     {
-        if (index == -1) // Deactivate all players input
+        // Deactivate all players input
+        foreach (PlayerInput p in _playersInputs)
         {
-            /*foreach (PlayerInput player in _players)
-            {
-                player.SetActive(false);
-                player.DeactivateInput();
-            }*/
-        }
-        else
-        {
-            //_player.SetActive(false);
-            //_players[index].DeactivateInput();
+            p.gameObject.SetActive(false);
+
+            // Restart player's UI
+            _playersHUDs[p.playerIndex].Restart();
+            _playersFollowers[p.playerIndex].Restart();
+
+            p.DeactivateInput();
         }
     }
 
-    //TODO: Add this function in every player onDied event
     private void PlayerDied()
     {
         _playerCount--;
@@ -99,43 +108,36 @@ public class MultiplayerManager : MonoBehaviour
 
     private void EndRound()
     {
-        /*foreach (PlayerInput p in _players)
+        foreach (PlayerInput p in _playersInputs)
         {
+            // Find the player who won the round
             if (p.gameObject.activeInHierarchy)
             {
-                //TODO: The last player standing wons
-                // Invoke onWonRound for that player
+                p.GetComponent<PlayerController>().OnWonRound.Invoke(_curRound);
             }
-        }*/
+        }
 
         DeactivatePlayers();
     }
 
     public void StartRound()
     {
+        _curRound++;
         _countdown.Begin(6);
     }
 
-    // <summary>
-    /// Called when a new player input is instantiated
-    /// Makes him a child of this gameObject and activate its UI
-    /// </summary>
-    /// <param name="player"></param>
     public void OnPlayerJoined(PlayerInput player)
     {
-        /*player.transform.SetParent(this.transform);
-
         _playerCount++;
 
+        player.transform.SetParent(transform);
+
         int index = player.playerIndex;
-        _playerUIs[index].gameObject.SetActive(true);
-        _playerUIs[index].Setup(player.gameObject);
+        // Setup player's UI
+        _playersHUDs[index].Setup(player.gameObject);
+        _playersFollowers[index].Setup(player.gameObject);
+        _playersScores[index].Setup(player.gameObject);
 
-        player.GetComponent<HealthSystem>().onDeath += HandlePlayer_onDeath;*/
+        player.GetComponent<PlayerHealth>().OnDied.AddListener(PlayerDied);
     }
-}
-
-public enum Character
-{
-    None, Plum, Lime, Thunder
 }

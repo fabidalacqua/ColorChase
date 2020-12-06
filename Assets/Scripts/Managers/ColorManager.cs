@@ -25,7 +25,8 @@ public class ColorManager : MonoBehaviour
         }
     }
 
-    //TODO: Reload scene to change all colors (made this way thinking in a dropdown value)
+    //TODO: Unfortunely we do not have time to implement acessible options :(
+    //      Reload scene to change all colors (made this way thinking in a dropdown value)
     public void SetColorPalette(int colorType = 0)
     {
         if ((ColorType)colorType == ColorType.Default)

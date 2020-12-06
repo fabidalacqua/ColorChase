@@ -4,9 +4,6 @@ using UnityEngine.Events;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _player;
-
-    [SerializeField]
     private PlayerAnimation _animation;
 
     [SerializeField]

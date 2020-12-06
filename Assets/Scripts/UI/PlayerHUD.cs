@@ -4,9 +4,6 @@ using UnityEngine.UI;
 public class PlayerHUD : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _player;
-
-    [SerializeField]
     private Image _characterBase;
 
     [SerializeField]
@@ -14,6 +11,9 @@ public class PlayerHUD : MonoBehaviour
 
     [SerializeField]
     private Image _deadPlayer;
+
+    [SerializeField]
+    private Sprite _fullHeart;
 
     [SerializeField]
     private Sprite _noHeart;
@@ -25,25 +25,34 @@ public class PlayerHUD : MonoBehaviour
 
     private PlayerHealth _playerHealth;
 
-    private void Awake()
+    public void Setup(GameObject player)
     {
-        _playerItem = _player.GetComponentInChildren<PlayerItem>();
-        _playerHealth = _player.GetComponentInChildren<PlayerHealth>();
-    }
+        _playerItem = player.GetComponentInChildren<PlayerItem>();
+        _playerHealth = player.GetComponentInChildren<PlayerHealth>();
 
-    private void Start()
-    {
         // Set listeners for item and health changes
         _playerItem.OnChangeColor.AddListener(ChangeColor);
         _playerHealth.OnTakeDamage.AddListener(TakeDamage);
         _playerHealth.OnDied.AddListener(Died);
+
+        // Set sprite image for choosen character
+        PlayerAnimation animations = player.GetComponent<PlayerAnimation>();
+        _characterBase.sprite = animations.idleBaseSprite;
+        _characterFront.sprite = animations.idleFrontSprite;
     }
 
-    //TODO: Update sprite for character's player in the begining
-    public void SetCharacter()
+    public void Restart()
     {
-        /*_characterBase.sprite =
-        _characterFront.sprite = */
+        // Restart HUD for character
+        for (int i = 0; i < _hearts.Length; i++)
+        {
+             _hearts[i].sprite = _fullHeart;
+        }
+
+        _deadPlayer.gameObject.SetActive(false);
+        //TODO: This is kind of wrong...?
+        _characterBase.color = Color.white;
+        
     }
 
     private void ChangeColor(Color color)

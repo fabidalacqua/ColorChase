@@ -22,6 +22,7 @@ public class Item : MonoBehaviour
     private void Start()
     {
         Color color = ColorManager.Instance.GetColor(colorOption);
+        //TODO: Unfortunely we do not have time to implement acessible options :(
         // Set color option for projectile
         //projectilePrefab.ChangeColor(colorOption, color);
         // Set color for item

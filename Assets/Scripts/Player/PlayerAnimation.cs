@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
@@ -9,6 +7,8 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField]
     private Animator _frontAnimator;
+
+    public Sprite idleBaseSprite, idleFrontSprite;
 
     public void Walk(float moveSpeed)
     {

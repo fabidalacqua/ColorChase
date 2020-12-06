@@ -17,10 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public bool[] Victories { get; private set; }
 
-    [HideInInspector]
     public IntUnityEvent OnWonRound { get; private set; }
 
-    [HideInInspector]
     public UnityEvent OnScoreVictory { get; private set; }
 
     private void Awake()
@@ -34,11 +32,19 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         OnWonRound.AddListener(ScoreVictory);
+
+        _playerHealth.OnDied.AddListener(Deactivate);
     }
 
-    private void ScoreVictory(int roundIndex)
+    private void Deactivate()
     {
-        Victories[roundIndex] = true;
+        // Deativate player
+        gameObject.SetActive(false);
+    }
+
+    private void ScoreVictory(int roundNumber)
+    {
+        Victories[roundNumber-1] = true;
 
         if (OnScoreVictory != null)
             OnScoreVictory.Invoke();

@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Input Actions/PlayerInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Input Actions/PlayerInputActions.inputactions'
 
 using System;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @PlayerInput : IInputActionCollection, IDisposable
+public class @PlayerInputActions : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PlayerInput()
+    public @PlayerInputActions()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""PlayerInput"",
+    ""name"": ""PlayerInputActions"",
     ""maps"": [
         {
             ""name"": ""Gameplay"",
@@ -370,8 +370,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Throw;
     public struct GameplayActions
     {
-        private @PlayerInput m_Wrapper;
-        public GameplayActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInputActions m_Wrapper;
+        public GameplayActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Throw => m_Wrapper.m_Gameplay_Throw;
@@ -417,8 +417,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Menu_Join;
     public struct MenuActions
     {
-        private @PlayerInput m_Wrapper;
-        public MenuActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInputActions m_Wrapper;
+        public MenuActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Join => m_Wrapper.m_Menu_Join;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }

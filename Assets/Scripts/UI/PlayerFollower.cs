@@ -4,9 +4,6 @@ using UnityEngine.UI;
 public class PlayerFollower : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _player;
-
-    [SerializeField]
     private RectTransform _rectTransform;
 
     [SerializeField]
@@ -16,26 +13,41 @@ public class PlayerFollower : MonoBehaviour
 
     private PlayerItem _playerItem;
 
-    private void Awake()
+    private bool _ready = false;
+
+    public void Setup(GameObject player)
     {
         // Get main camera
         _mainCamera = FindObjectOfType<Camera>();
         // Get player item component
-        _playerItem = _player.GetComponentInChildren<PlayerItem>();
-    }
+        _playerItem = player.GetComponentInChildren<PlayerItem>();
 
-    private void Start()
-    {
         // Listeners for pick and throwing item
         _playerItem.OnPickUp.AddListener(PickUp);
         _playerItem.OnThrow.AddListener(Throw);
+
+        player.SetActive(true);
+
+        _ready = true;
     }
 
     void Update()
     {
-        // Update UI position to player
-        _rectTransform.position = 
-            RectTransformUtility.WorldToScreenPoint(_mainCamera, _playerItem.transform.position);
+        if (_ready)
+        {
+            // Update UI position to player
+            _rectTransform.position =
+                RectTransformUtility.WorldToScreenPoint(_mainCamera, _playerItem.transform.position);
+        }
+    }
+
+    public void Restart()
+    {
+        // Set active false to all items
+        for (int i = 0; i < _items.Length; i++)
+        {
+            _items[i].gameObject.SetActive(false);
+        }
     }
 
     private void Throw()
@@ -46,7 +58,6 @@ public class PlayerFollower : MonoBehaviour
             if (i >= _playerItem.Item.numberOfProj)
                 _items[i].gameObject.SetActive(false);
         }
-        
     }
 
     private void PickUp()
