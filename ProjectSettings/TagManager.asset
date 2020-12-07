@@ -48,3 +48,12 @@ TagManager:
   - name: bg
     uniqueID: 624755439
     locked: 0
+  - name: Items
+    uniqueID: 1354095613
+    locked: 0
+  - name: Player
+    uniqueID: 643842841
+    locked: 0
+  - name: Projectile
+    uniqueID: 3061501169
+    locked: 0

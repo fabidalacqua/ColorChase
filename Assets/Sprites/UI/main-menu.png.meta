@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 627398c6e3ffc494f998f6073c8c4b12
+guid: b8f3b2881c6a5144f8e7eba6580e5637
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7203652599472202408
-    second: menu inicial_0
+      213: -2464461341538140640
+    second: main-menu_0
   - first:
-      213: 8718515829935252199
-    second: menu inicial_1
+      213: 3660117216075920281
+    second: main-menu_1
   - first:
-      213: -9156026863104429921
-    second: menu inicial_2
+      213: 2909584560985332168
+    second: main-menu_0
   - first:
-      213: -1666835956523893431
-    second: menu inicial_3
+      213: 7219470827416059612
+    second: main-menu_1
+  - first:
+      213: 2338849425698072181
+    second: main-menu_2
+  - first:
+      213: 5719701388683310942
+    second: main-menu_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,85 +107,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menu inicial_0
+      name: main-menu_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 66
-        width: 60
-        height: 60
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a22cd46fd388f360800000000000000
-      internalID: 7203652599472202408
+      spriteID: 8c9dd791ebbe06820800000000000000
+      internalID: 2909584560985332168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: menu inicial_1
+      name: main-menu_1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 77
-        width: 62
-        height: 32
+        x: 0
+        y: 54
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e229e364f36ef870800000000000000
-      internalID: 8718515829935252199
+      spriteID: cdefd669776b03460800000000000000
+      internalID: 7219470827416059612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: menu inicial_2
+      name: main-menu_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 13
-        width: 62
+        x: 0
+        y: 4
+        width: 64
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f90f9b624124fe080800000000000000
-      internalID: -9156026863104429921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menu inicial_3
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 13
-        width: 62
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94d7b8067853ed8e0800000000000000
-      internalID: -1666835956523893431
+      spriteID: 5762cd13923457020800000000000000
+      internalID: 2338849425698072181
       vertices: []
       indices: 
       edges: []

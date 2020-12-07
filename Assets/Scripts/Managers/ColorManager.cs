@@ -17,7 +17,7 @@ public class ColorManager : MonoBehaviour
         {
             Instance = this;
 
-            _active = _default;
+            SetColorPalette(ColorType.Default);
         }
         else
         {
@@ -27,9 +27,9 @@ public class ColorManager : MonoBehaviour
 
     //TODO: Unfortunely we do not have time to implement acessible options :(
     //      Reload scene to change all colors (made this way thinking in a dropdown value)
-    public void SetColorPalette(int colorType = 0)
+    public void SetColorPalette(ColorType colorType)
     {
-        if ((ColorType)colorType == ColorType.Default)
+        if (colorType == ColorType.Default)
         {
             _active = _default;
         }

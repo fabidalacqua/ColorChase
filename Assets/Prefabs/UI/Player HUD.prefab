@@ -250,7 +250,8 @@ MonoBehaviour:
   _characterBase: {fileID: 3395230742351983346}
   _characterFront: {fileID: 3395230743460601427}
   _deadPlayer: {fileID: 5473719213040485534}
-  _noHeart: {fileID: 2844790872817999314, guid: dfc6db1986e016140aade40045eba4a4, type: 3}
+  _fullHeart: {fileID: -5185649437945853404, guid: dfc6db1986e016140aade40045eba4a4, type: 3}
+  _noHeart: {fileID: -3447507480621012285, guid: dfc6db1986e016140aade40045eba4a4, type: 3}
   _hearts:
   - {fileID: 3395230742756446439}
   - {fileID: 3395230743535959382}
@@ -319,7 +320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -246927772669311596, guid: dfc6db1986e016140aade40045eba4a4, type: 3}
+  m_Sprite: {fileID: -5185649437945853404, guid: dfc6db1986e016140aade40045eba4a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -394,7 +395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -246927772669311596, guid: dfc6db1986e016140aade40045eba4a4, type: 3}
+  m_Sprite: {fileID: -5185649437945853404, guid: dfc6db1986e016140aade40045eba4a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

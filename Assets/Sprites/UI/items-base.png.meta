@@ -1,43 +1,19 @@
 fileFormatVersion: 2
-guid: f2bc3cc67279aa540b0c1b20f7c7caa9
+guid: 5d4b7608565488f43909d1df8ddbc74e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5870388652862982923
-    second: _rmas_0
+      213: -7694333329689154643
+    second: items-base_0
   - first:
-      213: 939896093625373523
-    second: _rmas_1
+      213: 7660227394205767770
+    second: items-base_1
   - first:
-      213: -8076566383983639743
-    second: _rmas_2
+      213: -3002026157850332339
+    second: items-base_2
   - first:
-      213: 6752164414169962859
-    second: _rmas_3
-  - first:
-      213: 8630615561131195372
-    second: armas_0
-  - first:
-      213: 4714487056718736885
-    second: armas_1
-  - first:
-      213: 3290918344438294741
-    second: armas_2
-  - first:
-      213: -7718305920703717862
-    second: armas_3
-  - first:
-      213: 5307705251799675345
-    second: armas_0
-  - first:
-      213: 9112135978309240140
-    second: armas_1
-  - first:
-      213: -6357519350463989169
-    second: armas_2
-  - first:
-      213: -1904346677700525501
-    second: armas_3
+      213: -5039062115301328106
+    second: items-base_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -84,7 +60,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -125,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: armas_0
+      name: items-base_0
       rect:
         serializedVersion: 2
         x: 0
@@ -139,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d1bef91ec1c8a940800000000000000
-      internalID: 5307705251799675345
+      spriteID: dabed6c5a9c383590800000000000000
+      internalID: -7694333329689154643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: armas_1
+      name: items-base_1
       rect:
         serializedVersion: 2
         x: 64
@@ -160,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c45cd24e46fc47e70800000000000000
-      internalID: 9112135978309240140
+      spriteID: a58d95aba389e4a60800000000000000
+      internalID: 7660227394205767770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: armas_2
+      name: items-base_2
       rect:
         serializedVersion: 2
         x: 0
@@ -181,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4afbe695dd85c7a0800000000000000
-      internalID: -6357519350463989169
+      spriteID: d4376e66d19a656d0800000000000000
+      internalID: -3002026157850332339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: armas_3
+      name: items-base_3
       rect:
         serializedVersion: 2
         x: 64
@@ -202,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 342077a49c66295e0800000000000000
-      internalID: -1904346677700525501
+      spriteID: 61bf55844b7a11ab0800000000000000
+      internalID: -5039062115301328106
       vertices: []
       indices: 
       edges: []

@@ -147,6 +147,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.796875
       objectReference: {fileID: 0}
+    - target: {fileID: 2904495400086856093, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7425538274523669590, guid: 2bc7f5caa978a374e93af6151d666e91, type: 3}
+    - target: {fileID: 2904495400086856093, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3525547624236044173, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Name
       value: Yellow Projectile
@@ -170,18 +178,18 @@ PrefabInstance:
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7718305920703717862, guid: f2bc3cc67279aa540b0c1b20f7c7caa9, type: 3}
+      objectReference: {fileID: -5039062115301328106, guid: 5d4b7608565488f43909d1df8ddbc74e, type: 3}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.03529412
       objectReference: {fileID: 0}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.8000001
       objectReference: {fileID: 0}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.9843138
       objectReference: {fileID: 0}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_WasSpriteAssigned

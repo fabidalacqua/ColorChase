@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.9375
       objectReference: {fileID: 0}
+    - target: {fileID: 2904495400086856093, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8213122284591655152, guid: 2bc7f5caa978a374e93af6151d666e91, type: 3}
+    - target: {fileID: 2904495400086856093, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3525547624236044173, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Name
       value: Purple Projectile
@@ -82,22 +90,22 @@ PrefabInstance:
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4714487056718736885, guid: f2bc3cc67279aa540b0c1b20f7c7caa9, type: 3}
+      objectReference: {fileID: 7660227394205767770, guid: 5d4b7608565488f43909d1df8ddbc74e, type: 3}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.98823535
       objectReference: {fileID: 0}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.050980397
       objectReference: {fileID: 0}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.6901961
       objectReference: {fileID: 0}
     - target: {fileID: 5500374576270025250, guid: c9fcbc652e5e8a5469e984c927118f69, type: 3}
       propertyPath: m_WasSpriteAssigned

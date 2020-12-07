@@ -7,13 +7,15 @@ public class PlayerFollower : MonoBehaviour
     private RectTransform _rectTransform;
 
     [SerializeField]
-    private Image[] _items;
+    private GameObject[] _items;
 
     private Camera _mainCamera;
 
     private PlayerItem _playerItem;
 
     private bool _ready = false;
+
+    private Image[][] _itensImg;
 
     public void Setup(GameObject player)
     {
@@ -26,7 +28,11 @@ public class PlayerFollower : MonoBehaviour
         _playerItem.OnPickUp.AddListener(PickUp);
         _playerItem.OnThrow.AddListener(Throw);
 
-        player.SetActive(true);
+        // Get images base and front
+        for (int i = 0; i < _items.Length; i++)
+        {
+            _itensImg[i] = _items[i].GetComponentsInChildren<Image>();
+        }
 
         _ready = true;
     }
@@ -62,11 +68,15 @@ public class PlayerFollower : MonoBehaviour
 
     private void PickUp()
     {
-        // Set sprites for picked up item and set active true
-        foreach (Image i in _items)
+        for (int i = 0; i < _items.Length; i++)
         {
-            i.sprite = _playerItem.Item.Sprite;
-            i.gameObject.SetActive(true);
+            // Base item image
+            _itensImg[i][0].sprite = _playerItem.Item.BaseSprite;
+            _itensImg[i][0].color = _playerItem.Item.Color;
+            // Front item image
+            _itensImg[i][1].sprite = _playerItem.Item.FrontSprite;
+            // Show itens
+            _items[i].SetActive(true);
         }
     }
 }

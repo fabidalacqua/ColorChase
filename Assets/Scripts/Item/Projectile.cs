@@ -3,7 +3,7 @@
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _baseSpriteRenderer;
 
     [SerializeField]
     private Rigidbody2D _rigidbody2D;
@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     public void ChangeColor(ColorOption option, Color color)
     {
         colorOption = option;
-        _spriteRenderer.color = color;
+        _baseSpriteRenderer.color = color;
     }
 
     public int GetRelativeDamage(ColorOption target)

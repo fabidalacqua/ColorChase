@@ -4,7 +4,10 @@
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _baseSpriteRenderer;
+
+    [SerializeField]
+    private SpriteRenderer _frontSpriteRenderer;
 
     public ColorOption colorOption;
 
@@ -12,20 +15,24 @@ public class Item : MonoBehaviour
 
     public Projectile projectilePrefab;
 
-    public Sprite Sprite { get; private set; }
+    public Sprite BaseSprite { get; private set; }
+
+    public Sprite FrontSprite { get; private set; }
+
+    public Color Color { get; private set; }
 
     private void Awake()
     {
-        Sprite = _spriteRenderer.sprite;
+        BaseSprite = _baseSpriteRenderer.sprite;
+        FrontSprite = _frontSpriteRenderer.sprite;
     }
 
     private void Start()
     {
-        Color color = ColorManager.Instance.GetColor(colorOption);
-        //TODO: Unfortunely we do not have time to implement acessible options :(
+        Color = ColorManager.Instance.GetColor(colorOption);
         // Set color option for projectile
-        //projectilePrefab.ChangeColor(colorOption, color);
+        projectilePrefab.ChangeColor(colorOption, Color);
         // Set color for item
-        //_spriteRenderer.color = color;
+        _baseSpriteRenderer.color = Color;
     }
 }
