@@ -19,5 +19,7 @@ public class WinnerPanel : MonoBehaviour
         // Set sprite image for choosen character
         PlayerAnimation animations = player.GetComponent<PlayerAnimation>();
         _playerImg.sprite = animations.idleBaseSprite;
+
+        AudioManager.Instance.Play("win");
     }
 }

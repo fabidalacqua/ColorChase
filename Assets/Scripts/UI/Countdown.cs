@@ -26,7 +26,12 @@ public class Countdown : MonoBehaviour
             if (_timer >  0)
             {
                 int seconds = (int)(_timer % 60);
-                _label.text = seconds.ToString();
+                // Update text when seconds change
+                if (!_label.text.Equals(seconds.ToString()))
+                {
+                    _label.text = seconds.ToString();
+                    AudioManager.Instance.Play("countdown");
+                } 
             }
             else
             {

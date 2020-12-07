@@ -51,6 +51,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_isVulnerable)
         {
+            AudioManager.Instance.Play("hurt");
+
             _animation.Hurt();
 
             _health -= damage;
@@ -61,6 +63,8 @@ public class PlayerHealth : MonoBehaviour
 
             if (_health <= 0)
             {
+                AudioManager.Instance.Play("die");
+
                 if (OnDied != null)
                     OnDied.Invoke();
             }

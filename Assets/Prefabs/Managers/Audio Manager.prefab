@@ -142,9 +142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 4681040158379332025}
   _sounds:
-  - name: btnselected
+  - name: select
     audioClip: {fileID: 8300000, guid: f7d75157b89e03f439f30fbcec8d58a7, type: 3}
-  - name: btnclick
+  - name: countdown
     audioClip: {fileID: 8300000, guid: e1e927dd07cd3504a9e23a1dbdd5ec36, type: 3}
   - name: jump
     audioClip: {fileID: 8300000, guid: c6361613f7d04e042b98b4e50d83e819, type: 3}
@@ -156,7 +156,5 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: cbff8a2f06d81794daa23743c04e038e, type: 3}
   - name: pickup
     audioClip: {fileID: 8300000, guid: 36358336c5e85c744aa51261a7989014, type: 3}
-  - name: countdown
-    audioClip: {fileID: 8300000, guid: f7d75157b89e03f439f30fbcec8d58a7, type: 3}
   - name: win
     audioClip: {fileID: 8300000, guid: a62cf9e5011bf4f44a0f8a17783aea78, type: 3}
