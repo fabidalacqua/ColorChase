@@ -34,7 +34,7 @@ public class Settings : MonoBehaviour
     {
         _volumeSlider.value = volume;
 
-        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("volume", volume);
         PlayerPrefs.SetFloat("volume", volume);
     }
 

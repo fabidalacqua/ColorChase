@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: d319eccd465b22643af0fca43ed56af7
+guid: 554b1c2db530b714cb821351d07c70e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3358933203163112000
-    second: settings_0
+      213: -5175148029312991847
+    second: instructions_0
   - first:
-      213: 5522462000872384587
-    second: settings_1
+      213: -3357119809498272662
+    second: instructions_1
+  - first:
+      213: 3071214551617997835
+    second: instructions_0
+  - first:
+      213: 915644176346699406
+    second: instructions_1
+  - first:
+      213: 1535362750007366049
+    second: instructions_2
+  - first:
+      213: 4116211464063232159
+    second: instructions_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -52,7 +64,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: settings_0
+      name: instructions_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 40
-        height: 40
+        y: 120
+        width: 60
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cd92315c0ca261d0800000000000000
-      internalID: -3358933203163112000
+      spriteID: b0c833adc552f9a20800000000000000
+      internalID: 3071214551617997835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: settings_1
+      name: instructions_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 40
-        height: 40
+        y: 60
+        width: 60
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +142,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4867973ee9b3ac40800000000000000
-      internalID: 5522462000872384587
+      spriteID: e86dccfe68505bc00800000000000000
+      internalID: 915644176346699406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: instructions_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9821e79488bf1930800000000000000
+      internalID: 4116211464063232159
       vertices: []
       indices: 
       edges: []

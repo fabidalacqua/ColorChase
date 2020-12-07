@@ -17,7 +17,7 @@ public class ColorManager : MonoBehaviour
         {
             Instance = this;
 
-            SetColorPalette(ColorType.Default);
+            SetColorPalette((ColorType)PlayerPrefs.GetInt("colorType", 0));
 
             DontDestroyOnLoad(gameObject);
         }
