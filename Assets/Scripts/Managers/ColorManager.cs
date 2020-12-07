@@ -18,6 +18,8 @@ public class ColorManager : MonoBehaviour
             Instance = this;
 
             SetColorPalette(ColorType.Default);
+
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -25,8 +27,6 @@ public class ColorManager : MonoBehaviour
         }
     }
 
-    //TODO: Unfortunely we do not have time to implement acessible options :(
-    //      Reload scene to change all colors (made this way thinking in a dropdown value)
     public void SetColorPalette(ColorType colorType)
     {
         if (colorType == ColorType.Default)
