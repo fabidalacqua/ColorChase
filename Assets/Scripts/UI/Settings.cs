@@ -3,7 +3,6 @@ using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-//TODO: Working settings.
 public class Settings : MonoBehaviour
 {
     [SerializeField]

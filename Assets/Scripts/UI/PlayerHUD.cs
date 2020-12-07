@@ -50,8 +50,7 @@ public class PlayerHUD : MonoBehaviour
         }
 
         _deadPlayer.gameObject.SetActive(false);
-        //TODO: This is kind of wrong...?
-        _characterBase.color = Color.white;
+        _characterBase.color = ColorManager.Instance.GetColor(ColorOption.None);
         
     }
 
