@@ -43,8 +43,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: ed006a2466832dc4fadf194fc7f6d401, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -141,4 +141,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 4681040158379332025}
-  _sounds: []
+  _sounds:
+  - name: btnselected
+    audioClip: {fileID: 8300000, guid: f7d75157b89e03f439f30fbcec8d58a7, type: 3}
+  - name: btnclick
+    audioClip: {fileID: 8300000, guid: e1e927dd07cd3504a9e23a1dbdd5ec36, type: 3}
+  - name: jump
+    audioClip: {fileID: 8300000, guid: c6361613f7d04e042b98b4e50d83e819, type: 3}
+  - name: hurt
+    audioClip: {fileID: 8300000, guid: 88d4a1e21a6552f48980332a619e8d8a, type: 3}
+  - name: throw
+    audioClip: {fileID: 8300000, guid: e3a5dd21f77ee8545b2af29d0759edc9, type: 3}
+  - name: die
+    audioClip: {fileID: 8300000, guid: cbff8a2f06d81794daa23743c04e038e, type: 3}
+  - name: pickup
+    audioClip: {fileID: 8300000, guid: 36358336c5e85c744aa51261a7989014, type: 3}
+  - name: countdown
+    audioClip: {fileID: 8300000, guid: f7d75157b89e03f439f30fbcec8d58a7, type: 3}
+  - name: win
+    audioClip: {fileID: 8300000, guid: a62cf9e5011bf4f44a0f8a17783aea78, type: 3}
