@@ -57,7 +57,7 @@ public class PlayerItem : MonoBehaviour
     {
         if (_canPickUp)
         {
-            AudioManager.Instance.Play("pickup");
+            // AudioManager.Instance.Play("pickup");
 
             _canPickUp = false;
             _timer = 0f;
@@ -86,7 +86,7 @@ public class PlayerItem : MonoBehaviour
         {
             if (Item.numberOfProj > 0)
             {
-                AudioManager.Instance.Play("throw");
+                // AudioManager.Instance.Play("throw");
 
                 _animation.Throw();
 

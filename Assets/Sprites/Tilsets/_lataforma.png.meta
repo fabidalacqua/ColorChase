@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 2bc7f5caa978a374e93af6151d666e91
+guid: 3e632a13a2c038c4eb1558dc07a1f128
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 920927139940175706
-    second: items-front_0
+      213: 2156776136122146940
+    second: _lataforma_0
   - first:
-      213: 8213122284591655152
-    second: items-front_1
+      213: -8380725052672305315
+    second: _lataforma_1
   - first:
-      213: -5808843781500363683
-    second: items-front_2
-  - first:
-      213: -7425538274523669590
-    second: items-front_3
+      213: 9082961780804294718
+    second: _lataforma_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,85 +98,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: items-front_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5f8620ca5ac7cc00800000000000000
-      internalID: 920927139940175706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: items-front_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f82eede33fdaf170800000000000000
-      internalID: 8213122284591655152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: items-front_2
+      name: _lataforma_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5c1fe77b57d26fa0800000000000000
-      internalID: -5808843781500363683
+      spriteID: c70a99df7786eed10800000000000000
+      internalID: 2156776136122146940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items-front_3
+      name: _lataforma_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aab13f0184033f890800000000000000
-      internalID: -7425538274523669590
+      spriteID: d571043b7fea1bb80800000000000000
+      internalID: -8380725052672305315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _lataforma_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e381a45bd992d0e70800000000000000
+      internalID: 9082961780804294718
       vertices: []
       indices: 
       edges: []
@@ -193,9 +169,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: fcd0a3c309506c44ba9689a1afda271a, type: 3}
-      name: _Emission
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Avoid()
     {
-		AudioManager.Instance.Play("jump");
+		// AudioManager.Instance.Play("jump");
 
 		_canMove = false;
 		Invoke("SetCanMoveToTrue", _canMoveTimer);
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (_grounded)
 		{
-			AudioManager.Instance.Play("jump");
+			// AudioManager.Instance.Play("jump");
 
 			_grounded = false;
 
@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		else if (_wall)
 		{
-			AudioManager.Instance.Play("jump");
+			// AudioManager.Instance.Play("jump");
 
 			_wall = false;
 

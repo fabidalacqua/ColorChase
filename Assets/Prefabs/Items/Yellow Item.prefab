@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5726392732360617432, guid: 2c17d47c1e53f4a439a04814f6b0422f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e1feabc44a0d6c04c83ae0f0bba107a4, type: 2}
     - target: {fileID: 5726392732360617437, guid: 2c17d47c1e53f4a439a04814f6b0422f, type: 3}
       propertyPath: m_Name
       value: Yellow Item
