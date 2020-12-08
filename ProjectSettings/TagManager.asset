@@ -8,6 +8,7 @@ TagManager:
   - Grid
   - Projectile
   - Head
+  - Teleport
   layers:
   - Default
   - TransparentFX
