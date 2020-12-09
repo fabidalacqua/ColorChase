@@ -19,24 +19,21 @@ public class PlayerController : MonoBehaviour
 
     public int VictoriesCount { get; private set; }
 
-    public IntUnityEvent OnWonRound { get; private set; }
+    public IntUnityEvent onWonRound = new IntUnityEvent();
 
-    public UnityEvent OnScoreVictory { get; private set; }
+    public UnityEvent onScoreVictory = new UnityEvent();
 
     private void Awake()
     {
         Victories = new bool[] { false, false, false, false };
         VictoriesCount = 0;
-
-        OnWonRound = new IntUnityEvent();
-        OnScoreVictory = new UnityEvent();
     }
 
     private void Start()
     {
-        OnWonRound.AddListener(ScoreVictory);
+        onWonRound.AddListener(ScoreVictory);
 
-        _playerHealth.OnDied.AddListener(Deactivate);
+        _playerHealth.onDied.AddListener(Deactivate);
     }
 
     private void Deactivate()
@@ -50,8 +47,8 @@ public class PlayerController : MonoBehaviour
         Victories[roundNumber-1] = true;
         VictoriesCount++;
 
-        if (OnScoreVictory != null)
-            OnScoreVictory.Invoke();
+        if (onScoreVictory != null)
+            onScoreVictory.Invoke();
     }
 
     #region Input Handler

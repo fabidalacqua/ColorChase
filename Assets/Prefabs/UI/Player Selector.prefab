@@ -259,14 +259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c3f395304ac10489d0efe1861b7a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters:
-  - {fileID: 6427195554312492905, guid: da20bdbc6791e1d45a650a0a2933f2d7, type: 3}
-  - {fileID: -2133892350014591062, guid: 54c437ab4f1807f429b50a98d9edd21d, type: 3}
-  - {fileID: 6641013788679883628, guid: ee88073b7623c52458b7c43bbe4ae7ed, type: 3}
+  _characters: {fileID: 11400000, guid: 2643bef612dfe354cbc5f0ca457a4330, type: 2}
   _joined: {fileID: 4423401369354497082}
   _leftArrow: {fileID: 1452423495466238665}
   _rightArrow: {fileID: 3306451106210280979}
   _characterImage: {fileID: 8821889711495232406}
+  _available: 
 --- !u!1 &4423401369354497082
 GameObject:
   m_ObjectHideFlags: 0

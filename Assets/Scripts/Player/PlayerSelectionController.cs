@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerSelector : MonoBehaviour
+public class PlayerSelectionController : MonoBehaviour
 {
     private CharacterSelector _characterSelector = null;
+
+    public int Character { get; private set; }
 
     public void Join(CharacterSelector characterSelector)
     {
         _characterSelector = characterSelector;
-        _characterSelector.Joined();
+        Character = _characterSelector.Joined();
     }
 
-    public void OnJoin(InputAction.CallbackContext ctx)
+    public void Leave()
     {
-        /*if (_characterSelector != null)
-        {
-            _characterSelector.SelectCharacter();
-        }*/
+        _characterSelector.Left();
+        _characterSelector = null;
     }
 
     public void OnLeftArrow(InputAction.CallbackContext ctx)
@@ -24,7 +24,7 @@ public class PlayerSelector : MonoBehaviour
         // Fix to input action triggering multiple times
         if (!ctx.performed) return;
 
-        _characterSelector.PreviousCharacter();
+        Character = _characterSelector.PreviousCharacter();
     }
 
     public void OnRightArrow(InputAction.CallbackContext ctx)
@@ -32,11 +32,6 @@ public class PlayerSelector : MonoBehaviour
         // Fix to input action triggering multiple times
         if (!ctx.performed) return;
 
-        _characterSelector.NextCharacter();
-    }
-
-    public void OnLeave(InputAction.CallbackContext ctx)
-    {
-        _characterSelector.Left();
+        Character = _characterSelector.NextCharacter();
     }
 }

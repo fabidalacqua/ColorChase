@@ -11,12 +11,7 @@ public class Countdown : MonoBehaviour
 
     private bool _started = false;
 
-    public UnityEvent OnEndCountdown { get; private set; }
-
-    private void Awake()
-    {
-        OnEndCountdown = new UnityEvent();
-    }
+    public UnityEvent onEndCountdown;
 
     private void Update()
     {
@@ -37,8 +32,8 @@ public class Countdown : MonoBehaviour
             {
                 SetCountdown(false);
 
-                if (OnEndCountdown != null)
-                    OnEndCountdown.Invoke();
+                if (onEndCountdown != null)
+                    onEndCountdown.Invoke();
             }
         }
     }

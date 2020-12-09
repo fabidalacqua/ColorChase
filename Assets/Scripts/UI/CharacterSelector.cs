@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class CharacterSelector : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] _characters;
+    private Characters _characters;
 
     [SerializeField]
     private GameObject _joined;
@@ -15,60 +15,94 @@ public class CharacterSelector : MonoBehaviour
     [SerializeField]
     private Image _characterImage;
 
-    public bool[] _available;
-
-    public int Index { get; private set; }
+    private int _curIndex = -1;
 
     public bool Available { get; private set; }
 
     private void Awake()
     {
+        if (_characters == null)
+            Debug.LogError("Missing characters object reference.");
+
         Available = true;
-        Index = 0;
     }
 
-    public void Joined()
+    public int Joined()
     {
         _joined.SetActive(true);
         Available = false;
+
+        NextCharacter();
+
+        return _curIndex;
     }
 
     public void Left()
     {
         _joined.SetActive(false);
         Available = true;
+        SetCharacterToAvailable(_curIndex);
     }
 
-    public void NextCharacter()
+    public int NextCharacter()
     {
-        Index++;
+        // Keep the previous character index
+        int prevIndex = _curIndex;
+        do
+        {
+            _curIndex++;
+            if (_curIndex >= _characters.list.Length)
+                _curIndex = 0;
+        }
+        while (!_characters.list[_curIndex].available);
 
-        if (Index >= _characters.Length)
-            Index = 0;
+        ArrowBlink(_rightArrow);
+        // If had a previous index, define it as available
+        SetCharacterToAvailable(prevIndex);
+        // Set current character
+        SetCharacter();
 
-        _characterImage.sprite = _characters[Index];
+        return _curIndex;
+    }
 
-        _rightArrow.color = Color.black;
+    public int PreviousCharacter()
+    {
+        // Keep the previous character index
+        int prevIndex = _curIndex;
+        do
+        {
+            _curIndex--;
+            if (_curIndex < 0)
+                _curIndex = _characters.list.Length - 1;
+        }
+        while (!_characters.list[_curIndex].available);
+
+        ArrowBlink(_leftArrow);
+
+        // If had a previous index, define it as available
+        SetCharacterToAvailable(prevIndex);
+        // Set current character
+        SetCharacter();
+
+        return _curIndex;
+    }
+
+    private void SetCharacter()
+    {
+        _characterImage.sprite = _characters.list[_curIndex].sprite;
+        _characters.list[_curIndex].available = false;
+    }
+
+    private void SetCharacterToAvailable(int index)
+    {
+        if (index != -1)
+            _characters.list[index].available = true;
+    }
+
+    private void ArrowBlink(Image arrow)
+    {
+        arrow.color = Color.black;
         Invoke("ReturnToWhite", .1f);
-    }
-
-    public void PreviousCharacter()
-    {
-        Index--;
-
-        if (Index < 0)
-            Index = _characters.Length - 1;
-
-        _characterImage.sprite = _characters[Index];
-
-        _leftArrow.color = Color.black;
-        Invoke("ReturnToWhite", .1f);
-    }
-
-    public void SelectCharacter()
-    {
-        //Remover personagem da lista de disponiveis para que os outros player nao escolham
-        //
     }
 
     private void ReturnToWhite()

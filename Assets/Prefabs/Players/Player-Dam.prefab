@@ -79,6 +79,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 718166658019471002, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: idleBaseSprite
+      value: 
+      objectReference: {fileID: 4703690295490688795, guid: 5d84454dfdcb90c429da61fd0c0df53e, type: 3}
+    - target: {fileID: 718166658019471002, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: idleFrontSprite
+      value: 
+      objectReference: {fileID: -1139840466766077058, guid: 534fe2582d9c37c419041808774f3767, type: 3}
     - target: {fileID: 2902664143553161970, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.45

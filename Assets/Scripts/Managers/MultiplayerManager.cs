@@ -9,7 +9,7 @@ public class MultiplayerManager : MonoBehaviour
     private GameObject[] _playersPrefabs;
 
     [SerializeField]
-    private PlayerHUD[] _playersHUDs;
+    private PlayerHUD[] _playersHUD;
 
     [SerializeField]
     private PlayerFollower[] _playersFollowers;
@@ -24,7 +24,7 @@ public class MultiplayerManager : MonoBehaviour
     private Countdown _countdown;
 
     [SerializeField]
-    private GameObject _endRoundPanel;
+    private GameObject _roundPanel;
 
     [SerializeField]
     private WinnerPanel _winnerPanel;
@@ -60,7 +60,7 @@ public class MultiplayerManager : MonoBehaviour
         InstantiatePlayersWithSetDevices();
 
         // Add listener for activate players when countdown is over
-        _countdown.OnEndCountdown.AddListener(ActivatePlayers);
+        _countdown.onEndCountdown.AddListener(ActivatePlayers);
 
         // Start countdown
         StartRound();
@@ -87,7 +87,7 @@ public class MultiplayerManager : MonoBehaviour
                 // Instantiate player with device
                 PlayerInput playerInput = _playerInputManager.JoinPlayer(i,
                     pairWithDevice: InputSystem.GetDevice(devicePath), controlScheme: controlScheme);
-                _playersInputs.Add(playerInput); 
+                _playersInputs.Add(playerInput);
             }
         }
     }
@@ -104,26 +104,32 @@ public class MultiplayerManager : MonoBehaviour
     {
         foreach (PlayerInput p in playerInputs)
         {
+            Debug.Log(p);
+            p.gameObject.SetActive(true);
             // Place player in position
             p.gameObject.transform.position = _spawnPoints[p.playerIndex].position;
-            p.gameObject.SetActive(true);
             p.ActivateInput();
         }
     }
 
     private void DeactivatePlayers()
     {
+        Debug.Log("1");
         // Deactivate all players input
         foreach (PlayerInput p in _playersInputs)
         {
-            p.gameObject.SetActive(false);
-
             // Restart player's UI
-            _playersHUDs[p.playerIndex].Restart();
+            _playersHUD[p.playerIndex].Restart();
             _playersFollowers[p.playerIndex].Restart();
-
-            p.DeactivateInput();
+            DeactivatePlayer(p);
         }
+    }
+
+    private void DeactivatePlayer(PlayerInput playerInput)
+    {
+        Debug.Log("2");
+        //playerInput.DeactivateInput();
+        playerInput.gameObject.SetActive(false);
     }
 
     private void PlayerDied()
@@ -143,7 +149,7 @@ public class MultiplayerManager : MonoBehaviour
             // Find the player who won the round
             if (p.gameObject.activeInHierarchy)
             {
-                p.GetComponent<PlayerController>().OnWonRound.Invoke(_curRound);
+                p.GetComponent<PlayerController>().onWonRound.Invoke(_curRound);
                 // Set round winner (used in tiebreaker)
                 curWinner = p;
             }
@@ -152,13 +158,13 @@ public class MultiplayerManager : MonoBehaviour
         DeactivatePlayers();
 
         if (!_tiebreaker)
-            _endRoundPanel.SetActive(true);
+            _roundPanel.SetActive(true);
         else
             _winnerPanel.SetWinner(curWinner.gameObject, curWinner.playerIndex + 1);
     }
 
     //TODO: With end round panel active, any player must press A to continue
-    public void StartRound()
+    private void StartRound()
     {
         if (!_tiebreaker)
         {
@@ -221,18 +227,20 @@ public class MultiplayerManager : MonoBehaviour
         return winner;
     }
 
-    public void OnJoinedPlayer(PlayerInput player)
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
         _playerCount++;
 
-        player.transform.SetParent(transform);
+        playerInput.transform.SetParent(transform);
 
-        int index = player.playerIndex;
+        int index = playerInput.playerIndex;
         // Setup player's UI
-        _playersHUDs[index].Setup(player.gameObject);
-        _playersFollowers[index].Setup(player.gameObject);
-        _playersScores[index].Setup(player.gameObject);
+        _playersHUD[index].Setup(playerInput.gameObject);
+        _playersFollowers[index].Setup(playerInput.gameObject);
+        _playersScores[index].Setup(playerInput.gameObject);
 
-        player.GetComponent<PlayerHealth>().OnDied.AddListener(PlayerDied);
+        playerInput.GetComponentInChildren<PlayerHealth>().onDied.AddListener(PlayerDied);
+
+        DeactivatePlayer(playerInput);
     }
 }

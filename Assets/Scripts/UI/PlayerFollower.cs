@@ -7,15 +7,16 @@ public class PlayerFollower : MonoBehaviour
     private RectTransform _rectTransform;
 
     [SerializeField]
-    private GameObject[] _items;
+    private Image[] _itemsBase;
+
+    [SerializeField]
+    private Image[] _itemsFront;
 
     private Camera _mainCamera;
 
     private PlayerItem _playerItem;
 
     private bool _ready = false;
-
-    private Image[][] _itensImg;
 
     public void Setup(GameObject player)
     {
@@ -25,16 +26,8 @@ public class PlayerFollower : MonoBehaviour
         _playerItem = player.GetComponentInChildren<PlayerItem>();
 
         // Listeners for pick and throwing item
-        _playerItem.OnPickUp.AddListener(PickUp);
-        _playerItem.OnThrow.AddListener(Throw);
-
-        // Get images base and front
-        for (int i = 0; i < _items.Length; i++)
-        {
-            _itensImg[i] = _items[i].GetComponentsInChildren<Image>();
-        }
-
-        _ready = true;
+        _playerItem.onPickUp.AddListener(PickUp);
+        _playerItem.onThrow.AddListener(Throw);
     }
 
     void Update()
@@ -50,33 +43,37 @@ public class PlayerFollower : MonoBehaviour
     public void Restart()
     {
         // Set active false to all items
-        for (int i = 0; i < _items.Length; i++)
+        for (int i = 0; i < _itemsBase.Length; i++)
         {
-            _items[i].gameObject.SetActive(false);
+            _itemsBase[i].GetComponentInParent<GameObject>().SetActive(false);
         }
     }
 
     private void Throw()
     {
         // Set active false to used item
-        for (int i = 0; i < _items.Length; i++)
+        for (int i = 0; i < _itemsBase.Length; i++)
         {
             if (i >= _playerItem.Item.numberOfProj)
-                _items[i].gameObject.SetActive(false);
+            {
+                _itemsBase[i].GetComponentInParent<GameObject>().SetActive(false);
+                _ready = false;
+            }
         }
     }
 
     private void PickUp()
     {
-        for (int i = 0; i < _items.Length; i++)
+        _ready = true;
+        for (int i = 0; i < _itemsBase.Length; i++)
         {
             // Base item image
-            _itensImg[i][0].sprite = _playerItem.Item.BaseSprite;
-            _itensImg[i][0].color = _playerItem.Item.Color;
+            _itemsBase[i].sprite = _playerItem.Item.BaseSprite;
+            _itemsBase[i].color = _playerItem.Item.Color;
             // Front item image
-            _itensImg[i][1].sprite = _playerItem.Item.FrontSprite;
+            _itemsFront[i].sprite = _playerItem.Item.FrontSprite;
             // Show itens
-            _items[i].SetActive(true);
+            _itemsBase[i].GetComponentInParent<GameObject>().SetActive(true);
         }
     }
 }

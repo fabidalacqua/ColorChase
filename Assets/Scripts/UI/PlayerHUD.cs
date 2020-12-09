@@ -31,12 +31,12 @@ public class PlayerHUD : MonoBehaviour
         _playerHealth = player.GetComponentInChildren<PlayerHealth>();
 
         // Set listeners for item and health changes
-        _playerItem.OnChangeColor.AddListener(ChangeColor);
-        _playerHealth.OnTakeDamage.AddListener(TakeDamage);
-        _playerHealth.OnDied.AddListener(Died);
+        _playerItem.onChangeColor.AddListener(ChangeColor);
+        _playerHealth.onTakeDamage.AddListener(TakeDamage);
+        _playerHealth.onDied.AddListener(Died);
 
         // Set sprite image for choosen character
-        PlayerAnimation animations = player.GetComponent<PlayerAnimation>();
+        PlayerAnimation animations = player.GetComponentInChildren<PlayerAnimation>();
         _characterBase.sprite = animations.idleBaseSprite;
         _characterFront.sprite = animations.idleFrontSprite;
     }
@@ -51,7 +51,6 @@ public class PlayerHUD : MonoBehaviour
 
         _deadPlayer.gameObject.SetActive(false);
         _characterBase.color = ColorManager.Instance.GetColor(ColorOption.None);
-        
     }
 
     private void ChangeColor(Color color)
