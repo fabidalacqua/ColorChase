@@ -172,6 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
             int dir = _facingRight ? 1 : -1;
             _rigidbody2D.velocity = new Vector2(dir * _dashSpeed, _rigidbody2D.velocity.y);
+            _animation.Dash();
         }
     }
 }

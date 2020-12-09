@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 35954bb493c00a641b8ca41cc53728cb
+guid: 5685f723449713e4ea69c120fe5a8a75
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2326054244045798785
-    second: dam-hurt-base_0
+      213: -8487935346180182122
+    second: ninja-dash-front_0
   - first:
-      213: 8849373401831089069
-    second: dam-hurt-base_1
+      213: -4128122854103584879
+    second: ninja-dash-front_1
   - first:
-      213: -909581441670048240
-    second: dam-hurt-base_0
+      213: 9028208511915202445
+    second: ninja-dash-front_0
   - first:
-      213: -3723747973662052762
-    second: dam-hurt-base_1
+      213: -6706238983386969090
+    second: ninja-dash-front_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dam-hurt-base_0
+      name: ninja-dash-front_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01618fa7f748063f0800000000000000
-      internalID: -909581441670048240
+      spriteID: d871ddedec3aa4d70800000000000000
+      internalID: 9028208511915202445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dam-hurt-base_1
+      name: ninja-dash-front_1
       rect:
         serializedVersion: 2
         x: 32
@@ -136,8 +136,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66eeacc72f6925cc0800000000000000
-      internalID: -3723747973662052762
+      spriteID: efbc7500d27aee2a0800000000000000
+      internalID: -6706238983386969090
       vertices: []
       indices: 
       edges: []

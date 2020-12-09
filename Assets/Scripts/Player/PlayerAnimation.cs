@@ -33,4 +33,10 @@ public class PlayerAnimation : MonoBehaviour
         _baseAnimator.SetTrigger("Throw");
         _frontAnimator.SetTrigger("Throw");
     }
+
+    public void Dash()
+    {
+        _baseAnimator.SetTrigger("Dash");
+        _frontAnimator.SetTrigger("Dash");
+    }
 }
