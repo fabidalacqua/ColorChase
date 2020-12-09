@@ -77,6 +77,14 @@ public class PlayerController : MonoBehaviour
         _playerItem.Throw();
     }
 
+    public void OnDash(InputAction.CallbackContext ctx)
+    {
+         // Fix to input action triggering multiple times
+        if (!ctx.performed) return;
+
+        _playerMovement.Dash();
+    }
+
     #endregion
 
     #region Collision

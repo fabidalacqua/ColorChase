@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Gameplay",
@@ -25,6 +25,14 @@
                     "name": "Throw",
                     "type": "Button",
                     "id": "7f3ad788-6493-4474-9283-ee0fcbd818ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "76607c69-7a9b-4cbb-b540-c2ef4e6776ed",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -215,6 +223,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd6d19a7-2ee7-4a1d-a7a3-425738da9cb0",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
