@@ -16,7 +16,7 @@ public class PlayerScore : MonoBehaviour
         _playerController = player.GetComponent<PlayerController>();
 
         // Add listener to player score
-        _playerController.OnScoreVictory.AddListener(UpdateScore);
+        _playerController.onScoreVictory.AddListener(UpdateScore);
     }
 
     private void UpdateScore()

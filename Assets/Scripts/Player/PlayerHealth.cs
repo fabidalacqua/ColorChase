@@ -18,15 +18,9 @@ public class PlayerHealth : MonoBehaviour
 
     private float _timer = 0;
 
-    public IntUnityEvent OnTakeDamage { get; private set; }
+    public IntUnityEvent onTakeDamage = new IntUnityEvent();
 
-    public UnityEvent OnDied { get; private set; }
-
-    private void Awake()
-    {
-        OnTakeDamage = new IntUnityEvent();
-        OnDied = new UnityEvent();
-    }
+    public UnityEvent onDied = new UnityEvent();
 
     private void Start()
     {
@@ -58,15 +52,15 @@ public class PlayerHealth : MonoBehaviour
             _health -= damage;
             _isVulnerable = false;
 
-            if (OnTakeDamage != null)
-                OnTakeDamage.Invoke(_health);
+            if (onTakeDamage != null)
+                onTakeDamage.Invoke(_health);
 
             if (_health <= 0)
             {
                 AudioManager.Instance.Play("die");
 
-                if (OnDied != null)
-                    OnDied.Invoke();
+                if (onDied != null)
+                    onDied.Invoke();
             }
         }
     }

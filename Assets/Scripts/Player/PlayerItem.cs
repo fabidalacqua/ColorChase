@@ -21,22 +21,18 @@ public class PlayerItem : MonoBehaviour
 
     private bool _canPickUp = false;
 
-    public UnityEvent OnPickUp { get; private set; }
-
-    public UnityEvent OnThrow { get; private set; }
-
     public Item Item { get; private set; }
 
     public ColorOption ColorOption { get; private set; }
 
-    public ColorUnityEvent OnChangeColor { get; private set; }
+    public UnityEvent onPickUp = new UnityEvent();
+
+    public UnityEvent onThrow = new UnityEvent();
+
+    public ColorUnityEvent onChangeColor = new ColorUnityEvent();
 
     private void Awake()
     {
-        OnPickUp = new UnityEvent();
-        OnThrow = new UnityEvent();
-
-        OnChangeColor = new ColorUnityEvent();
         ColorOption = ColorOption.None;
         Item = null;
     }
@@ -75,8 +71,8 @@ public class PlayerItem : MonoBehaviour
 
             ChangePlayerColor(Item.colorOption);
 
-            if (OnPickUp != null)
-                OnPickUp.Invoke();
+            if (onPickUp != null)
+                onPickUp.Invoke();
         }
     }
 
@@ -98,8 +94,8 @@ public class PlayerItem : MonoBehaviour
                     ChangePlayerColor(ColorOption.None);
                 }
 
-                if (OnThrow != null)
-                    OnThrow.Invoke();
+                if (onThrow != null)
+                    onThrow.Invoke();
             }
         }
     }
@@ -110,7 +106,7 @@ public class PlayerItem : MonoBehaviour
         Color color = ColorManager.Instance.GetColor(ColorOption);
         _spriteRenderer.color = color;
 
-        if (OnChangeColor != null)
-            OnChangeColor.Invoke(color);
+        if (onChangeColor != null)
+            onChangeColor.Invoke(color);
     }
 }
