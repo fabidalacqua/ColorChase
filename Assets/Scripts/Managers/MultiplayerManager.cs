@@ -81,7 +81,7 @@ public class MultiplayerManager : MonoBehaviour
             if (devicePath != null && controlScheme != null)
             {
                 // Get character prefab for player
-                int character = PlayerPrefs.GetInt($"player_{i}_character");
+                int character = PlayerPrefs.GetInt("player_"+ i +"_character");
                 _playerInputManager.playerPrefab = _playersPrefabs[character];
 
                 // Instantiate player with device
@@ -221,7 +221,7 @@ public class MultiplayerManager : MonoBehaviour
         return winner;
     }
 
-    public void OnPlayerJoined(PlayerInput player)
+    public void OnJoinedPlayer(PlayerInput player)
     {
         _playerCount++;
 
