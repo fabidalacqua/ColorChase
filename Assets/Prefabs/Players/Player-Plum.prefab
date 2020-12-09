@@ -223,6 +223,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7f3ad788-6493-4474-9283-ee0fcbd818ab
     m_ActionName: Gameplay/Throw[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 297c686a-8e98-4371-981c-aa2758d046e6
+    m_ActionName: Selector/LeftArrow[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c9a30a9-eff3-4356-8376-6e87e8e52357
+    m_ActionName: Selector/RightArrow[/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -297,8 +305,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 643842841
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6427195554312492905, guid: da20bdbc6791e1d45a650a0a2933f2d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -555,8 +563,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 643842841
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 5211795266591074547, guid: a41c96de2de97ab42b5fea2440d8ab0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
