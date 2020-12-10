@@ -28,16 +28,19 @@ public class MultiplayerManager : MonoBehaviour
 
     private PlayerInputManager _playerInputManager;
 
+    private int _numberPlayers = 0;
+
     private int _playersCount = 0;
 
     private List<PlayerInput> _playersInputs;
 
-    private bool[] _alivePlayers = new bool[4];
+    private bool[] _alivePlayers;
 
     private void Awake()
     {
         _playerInputManager = GetComponent<PlayerInputManager>();
         _playersInputs = new List<PlayerInput>();
+        _alivePlayers = new bool[] { true, true, true, true };
     }
 
     private void Start()
@@ -51,14 +54,14 @@ public class MultiplayerManager : MonoBehaviour
         _playersCount--;
         _alivePlayers[playerIndex] = false;
 
-        if (_playersCount == 1 && onLastPlayerStanding != null)
+        if (_playersCount <= 1 && onLastPlayerStanding != null)
             onLastPlayerStanding.Invoke();
     }
 
     public GameObject GetRoundWinner()
     {
         GameObject winner = null;
-        for (int i = 0; i < _alivePlayers.Length; i++)
+        for (int i = 0; i < _numberPlayers; i++)
         {
             if (_alivePlayers[i])
                 winner = _playersInputs[i].gameObject;
@@ -157,13 +160,15 @@ public class MultiplayerManager : MonoBehaviour
                 // Add to playerInput list
                 _playersInputs.Add(playerInput);
 
-                DeactivatePlayer(playerInput);
-
                 SetOnDiedEvent(playerInput);
+
+                DeactivatePlayer(playerInput);
 
                 _playersCount++;
             }
         }
+
+        _numberPlayers = playersCount;
     }
 
     private void SetOnDiedEvent(PlayerInput playerInput)

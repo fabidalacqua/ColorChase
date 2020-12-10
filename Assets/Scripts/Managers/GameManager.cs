@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private UnityEvent _onPause;
 
     [SerializeField]
-    private UnityEvent _onLastRound;
+    private UnityEvent _onGameOver;
 
     [Header("Input actions")]
 
@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     private InputAction _pauseAction = null;
 
     private int _curRound = 0;
+
+    private bool _gameOver = false;
 
     private void Start()
     {
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
 
     private void NextRound()
     {
+        // Deactivate all players
+        _multiplayerManager.DeactivatePlayers();
         // Hide end round panel
         _roundPanel.SetActive(false);
         // Disable confirm Action
@@ -80,10 +84,11 @@ public class GameManager : MonoBehaviour
     {
         // Get round winner and set score
         GameObject player = _multiplayerManager.GetRoundWinner();
-        player.GetComponent<PlayerController>().ScoreVictory(_curRound);
-
-        // Deactivate all players
-        _multiplayerManager.DeactivatePlayers();
+        
+        if (player != null)
+        {
+            player.GetComponent<PlayerController>().ScoreVictory(_curRound);
+        }
 
         // Show end round panel
         _roundPanel.SetActive(true);
@@ -98,13 +103,23 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
+        // Activate all players
+        _multiplayerManager.ActivatePlayers();
         // Get winner player
         GameObject winner = null;
         int winnerIndex = _multiplayerManager.GetGameWinner(out winner);
         // Set values for winner panel
         _winnerPanel.SetWinner(winner, winnerIndex + 1);
+
+        Invoke("EnableGameOver", 3f);
+    }
+
+    private void EnableGameOver()
+    {
         // Enable confirm action
         EnableConfirm();
+        _winnerPanel.ShowInfo();
+        _gameOver = true;
     }
 
     #region Input Handler
@@ -112,10 +127,10 @@ public class GameManager : MonoBehaviour
     private void Confirm(InputAction.CallbackContext ctx)
     {
         // Was the last round, game is over 
-        if (_curRound > _numberRounds)
+        if (_gameOver)
         {
-            if (_onLastRound != null)
-                _onLastRound.Invoke();
+            if (_onGameOver != null)
+                _onGameOver.Invoke();
         }
         else
         {
