@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
         _canMove = false;
         Invoke("SetCanMoveToTrue", _canMoveTimer);
-
+        Debug.Log("Avoid");
         _rigidbody2D.AddForce(_avoidForce * new Vector2(_facingRight ? -1 : 1, 1f), ForceMode2D.Impulse);
     }
 
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
             // AudioManager.Instance.Play("jump");
 
             _wall = false;
-
+            Debug.Log("Wall Jump");
             _canMove = false;
             Invoke("SetCanMoveToTrue", _canMoveTimer);
 

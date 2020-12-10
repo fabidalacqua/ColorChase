@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - Head
   - Teleport
+  - Feet
   layers:
   - Default
   - TransparentFX
