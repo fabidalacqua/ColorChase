@@ -2,8 +2,9 @@
 using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using CustomColor;
 
-public class Settings : MonoBehaviour
+public class SettingsController : MonoBehaviour
 {
     [SerializeField]
     private AudioMixer audioMixer;

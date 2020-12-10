@@ -8,6 +8,15 @@ TextureImporter:
   - first:
       213: -3447507480621012285
     second: health_1
+  - first:
+      213: -8561255720410398745
+    second: health_0
+  - first:
+      213: -7478371383933154844
+    second: health_1
+  - first:
+      213: 3173719682136373322
+    second: health_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -98,10 +107,10 @@ TextureImporter:
       name: health_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 7
+        y: 72
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42a88899f4fd808b0800000000000000
-      internalID: -5185649437945853404
+      spriteID: 7ef38a1284f403980800000000000000
+      internalID: -8561255720410398745
       vertices: []
       indices: 
       edges: []
@@ -119,10 +128,10 @@ TextureImporter:
       name: health_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 7
+        y: 8
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ca2519463ef720d0800000000000000
-      internalID: -3447507480621012285
+      spriteID: 4e9c73239dc773890800000000000000
+      internalID: -7478371383933154844
       vertices: []
       indices: 
       edges: []

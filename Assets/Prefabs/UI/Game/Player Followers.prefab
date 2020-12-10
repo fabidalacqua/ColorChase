@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057492080232573843}
   m_Layer: 5
-  m_Name: Followers
+  m_Name: Player Followers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
       propertyPath: m_Name
-      value: Player Item Follower 4
+      value: Player Follower 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
@@ -229,7 +233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
       propertyPath: m_Name
-      value: Player Item Follower 1
+      value: Player Follower 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
@@ -331,7 +339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
       propertyPath: m_Name
-      value: Player Item Follower 3
+      value: Player Follower 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
@@ -433,7 +445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
       propertyPath: m_Name
-      value: Player Item Follower 2
+      value: Player Follower 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209706033236787375, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e225fe93cee0842bca72ffee876a43, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using PlayerUI;
 
 [RequireComponent(typeof(PlayerInputManager))]
 public class MultiplayerManager : MonoBehaviour
@@ -44,7 +45,7 @@ public class MultiplayerManager : MonoBehaviour
     private bool _tiebreaker = false;
 
     List<PlayerInput> _tiebreakerPlayers;
-
+    /*
     private void Awake()
     {   
         _playerInputManager = GetComponent<PlayerInputManager>();
@@ -114,13 +115,9 @@ public class MultiplayerManager : MonoBehaviour
 
     private void DeactivatePlayers()
     {
-        Debug.Log("1");
         // Deactivate all players input
         foreach (PlayerInput p in _playersInputs)
         {
-            // Restart player's UI
-            _playersHUD[p.playerIndex].Restart();
-            _playersFollowers[p.playerIndex].Restart();
             DeactivatePlayer(p);
         }
     }
@@ -143,7 +140,7 @@ public class MultiplayerManager : MonoBehaviour
 
     private void EndRound()
     {
-        PlayerInput curWinner = null;
+       /* PlayerInput curWinner = null;
         foreach (PlayerInput p in _playersInputs)
         {
             // Find the player who won the round
@@ -160,8 +157,8 @@ public class MultiplayerManager : MonoBehaviour
         if (!_tiebreaker)
             _roundPanel.SetActive(true);
         else
-            _winnerPanel.SetWinner(curWinner.gameObject, curWinner.playerIndex + 1);
-    }
+            _winnerPanel.SetWinner(curWinner.gameObject, curWinner.playerIndex + 1);*/
+   /* }
 
     //TODO: With end round panel active, any player must press A to continue
     private void StartRound()
@@ -243,4 +240,5 @@ public class MultiplayerManager : MonoBehaviour
 
         DeactivatePlayer(playerInput);
     }
+*/
 }

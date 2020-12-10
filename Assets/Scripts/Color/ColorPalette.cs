@@ -1,27 +1,33 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-[CreateAssetMenu]
-public class ColorPalette : ScriptableObject
+namespace CustomColor
 {
-    public ColorType palette; 
+    [CreateAssetMenu]
+    public class ColorPalette : ScriptableObject
+    {
+        public ColorType palette;
 
-    public ColorPair[] colors;
-}
+        public ColorPair[] colors;
+    }
 
-public enum ColorType
-{
-    Default, Accessible
-}
+    public enum ColorType
+    {
+        Default, Accessible
+    }
 
-public enum ColorOption
-{
-    None, Red, Blue, Yellow, Purple
-}
+    public enum ColorOption
+    {
+        None, Red, Blue, Yellow, Purple
+    }
 
-[Serializable]
-public class ColorPair
-{
-    public ColorOption option;
-    public Color color;
+    [Serializable]
+    public class ColorPair
+    {
+        public ColorOption option;
+        public Color color;
+    }
+
+    public class ColorUnityEvent : UnityEvent<Color> { }
 }

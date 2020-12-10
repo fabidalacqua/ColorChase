@@ -2,48 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class ColorTable : ScriptableObject
+namespace CustomColor
 {
-    [SerializeField]
-    private int _defaultDamage = 1;
-
-    [SerializeField]
-    private int _relativeDamage = 2;
-
-    [SerializeField]
-    private List<ColorRow> _colorRows;
-
-    public int GetRelativeDamage(ColorOption myColor, ColorOption targetColor)
+    [CreateAssetMenu]
+    public class ColorTable : ScriptableObject
     {
-        if (targetColor == ColorOption.None)
-        {
-            return _defaultDamage;
-        }
+        [SerializeField]
+        private int _defaultDamage = 1;
 
-        foreach (ColorRow row in _colorRows)
+        [SerializeField]
+        private int _relativeDamage = 2;
+
+        [SerializeField]
+        private List<ColorRow> _colorRows;
+
+        public int GetRelativeDamage(ColorOption myColor, ColorOption targetColor)
         {
-            if (row.myColor == myColor)
+            if (targetColor == ColorOption.None)
             {
-                if (row.kill == targetColor)
+                return _defaultDamage;
+            }
+
+            foreach (ColorRow row in _colorRows)
+            {
+                if (row.myColor == myColor)
                 {
-                    return _relativeDamage;
-                }
-                else
-                {
-                    return _defaultDamage;
+                    if (row.kill == targetColor)
+                    {
+                        return _relativeDamage;
+                    }
+                    else
+                    {
+                        return _defaultDamage;
+                    }
                 }
             }
+
+            return _defaultDamage;
         }
-
-        return _defaultDamage;
     }
-}
 
-[Serializable]
-public class ColorRow
-{
-    public ColorOption myColor;
-    public ColorOption kill;
-    public ColorOption dieFor;
+    [Serializable]
+    public class ColorRow
+    {
+        public ColorOption myColor;
+        public ColorOption kill;
+        public ColorOption dieFor;
+    }
 }
