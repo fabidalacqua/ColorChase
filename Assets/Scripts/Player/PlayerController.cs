@@ -62,7 +62,7 @@ namespace Player
         public void OnJump(InputAction.CallbackContext ctx)
         {
             // Fix to input action triggering multiple times
-            if (!ctx.performed) return;
+            if (PauseMenu.isPaused || !ctx.performed) return;
 
             _playerMovement.Jump();
         }
@@ -70,7 +70,7 @@ namespace Player
         public void OnThrow(InputAction.CallbackContext ctx)
         {
             // Fix to input action triggering multiple times
-            if (!ctx.performed) return;
+            if (PauseMenu.isPaused || !ctx.performed) return;
 
             _playerItem.Throw();
         }
@@ -78,7 +78,7 @@ namespace Player
         public void OnDash(InputAction.CallbackContext ctx)
         {
             // Fix to input action triggering multiple times
-            if (!ctx.performed) return;
+            if (PauseMenu.isPaused || !ctx.performed) return;
 
             _playerMovement.Dash();
         }
