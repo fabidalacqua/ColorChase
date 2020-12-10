@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ImageColor : MonoBehaviour
+namespace CustomColor 
 {
-    [SerializeField]
-    private Image _image;
-
-    [SerializeField]
-    private ColorOption _color;
-
-    private void Start()
+    public class ImageColor : MonoBehaviour
     {
-        _image.color = ColorManager.Instance.GetColor(_color);
+        [SerializeField]
+        private Image _image;
+
+        [SerializeField]
+        private ColorOption _color;
+
+        private void Start()
+        {
+            _image.color = ColorManager.Instance.GetColor(_color);
+        }
     }
+
 }

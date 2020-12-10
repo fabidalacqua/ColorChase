@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1209706033236787362}
   - component: {fileID: 1209706033236787363}
   m_Layer: 5
-  m_Name: Player Item Follower
+  m_Name: Player Follower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,12 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1209706033236787372}
-  _itemsBase:
-  - {fileID: 1209706031997355750}
-  - {fileID: 7746284359530789360}
-  _itemsFront:
-  - {fileID: 5303186554127145395}
-  - {fileID: 65182543477412455}
+  _items:
+  - {fileID: 3705154374854775995}
+  - {fileID: 4048141704425614811}
 --- !u!1 &3705154374854775995
 GameObject:
   m_ObjectHideFlags: 0

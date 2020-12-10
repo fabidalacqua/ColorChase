@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Player;
 
 public class WinnerPanel : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class WinnerPanel : MonoBehaviour
     [SerializeField]
     private TMP_Text _playerLabel;
 
-    //TODO: With winner panel active, any player must press A to go to main menu
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SetWinner(GameObject player, int number)
     {
         gameObject.SetActive(true);

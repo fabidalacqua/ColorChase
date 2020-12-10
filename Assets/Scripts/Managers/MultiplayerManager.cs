@@ -1,12 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using PlayerUI;
+using Player;
 
 [RequireComponent(typeof(PlayerInputManager))]
 public class MultiplayerManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] _playersPrefabs;
+
+    [SerializeField]
+    private Transform[] _spawnPoints;
 
     [SerializeField]
     private PlayerHUD[] _playersHUD;
@@ -17,188 +23,52 @@ public class MultiplayerManager : MonoBehaviour
     [SerializeField]
     private PlayerScore[] _playersScores;
 
-    [SerializeField]
-    private Transform[] _spawnPoints;
-
-    [SerializeField]
-    private Countdown _countdown;
-
-    [SerializeField]
-    private GameObject _roundPanel;
-
-    [SerializeField]
-    private WinnerPanel _winnerPanel;
-
-    [SerializeField]
-    private float _numberRounds = 4;
+    [HideInInspector]
+    public UnityEvent onLastPlayerStanding = new UnityEvent();
 
     private PlayerInputManager _playerInputManager;
 
-    private int _playerCount = 0;
-
-    private int _curRound = 0;
+    private int _playersCount = 0;
 
     private List<PlayerInput> _playersInputs;
 
-    // Tiebreaker variables
-    private bool _tiebreaker = false;
-
-    List<PlayerInput> _tiebreakerPlayers;
+    private bool[] _alivePlayers = new bool[4];
 
     private void Awake()
-    {   
+    {
         _playerInputManager = GetComponent<PlayerInputManager>();
-
         _playersInputs = new List<PlayerInput>();
-
-        _tiebreakerPlayers = new List<PlayerInput>();
     }
 
     private void Start()
     {
         // Instantiate all joined players
         InstantiatePlayersWithSetDevices();
-
-        // Add listener for activate players when countdown is over
-        _countdown.onEndCountdown.AddListener(ActivatePlayers);
-
-        // Start countdown
-        StartRound();
     }
 
-    private void InstantiatePlayersWithSetDevices()
+    private void PlayerDied(int playerIndex)
     {
-        // Get the number of players joined in selection screen
-        int NumberPlayers = PlayerPrefs.GetInt("number_players");
-        string devicePath = null;
-        string controlScheme = null;
+        _playersCount--;
+        _alivePlayers[playerIndex] = false;
 
-        for (int i = 0; i < NumberPlayers; i++)
+        if (_playersCount == 1 && onLastPlayerStanding != null)
+            onLastPlayerStanding.Invoke();
+    }
+
+    public GameObject GetRoundWinner()
+    {
+        GameObject winner = null;
+        for (int i = 0; i < _alivePlayers.Length; i++)
         {
-            devicePath = PlayerPrefs.GetString("player_" + i + "_device", null);
-            controlScheme = PlayerPrefs.GetString("player_" + i + "_controlScheme", null);
-            
-            if (devicePath != null && controlScheme != null)
-            {
-                // Get character prefab for player
-                int character = PlayerPrefs.GetInt("player_"+ i +"_character");
-                _playerInputManager.playerPrefab = _playersPrefabs[character];
-
-                // Instantiate player with device
-                PlayerInput playerInput = _playerInputManager.JoinPlayer(i,
-                    pairWithDevice: InputSystem.GetDevice(devicePath), controlScheme: controlScheme);
-                _playersInputs.Add(playerInput);
-            }
+            if (_alivePlayers[i])
+                winner = _playersInputs[i].gameObject;
         }
+        return winner;
     }
 
-    private void ActivatePlayers()
+    public int GetGameWinner(out GameObject winner)
     {
-        if (!_tiebreaker)
-            ActivatePlayers(_playersInputs);
-        else // Is a tiebreaker round
-            ActivatePlayers(_tiebreakerPlayers);
-    }
-
-    private void ActivatePlayers(List<PlayerInput> playerInputs)
-    {
-        foreach (PlayerInput p in playerInputs)
-        {
-            Debug.Log(p);
-            p.gameObject.SetActive(true);
-            // Place player in position
-            p.gameObject.transform.position = _spawnPoints[p.playerIndex].position;
-            p.ActivateInput();
-        }
-    }
-
-    private void DeactivatePlayers()
-    {
-        Debug.Log("1");
-        // Deactivate all players input
-        foreach (PlayerInput p in _playersInputs)
-        {
-            // Restart player's UI
-            _playersHUD[p.playerIndex].Restart();
-            _playersFollowers[p.playerIndex].Restart();
-            DeactivatePlayer(p);
-        }
-    }
-
-    private void DeactivatePlayer(PlayerInput playerInput)
-    {
-        Debug.Log("2");
-        //playerInput.DeactivateInput();
-        playerInput.gameObject.SetActive(false);
-    }
-
-    private void PlayerDied()
-    {
-        _playerCount--;
-        if (_playerCount <= 1)
-        {
-            EndRound();
-        }
-    }
-
-    private void EndRound()
-    {
-        PlayerInput curWinner = null;
-        foreach (PlayerInput p in _playersInputs)
-        {
-            // Find the player who won the round
-            if (p.gameObject.activeInHierarchy)
-            {
-                p.GetComponent<PlayerController>().onWonRound.Invoke(_curRound);
-                // Set round winner (used in tiebreaker)
-                curWinner = p;
-            }
-        }
-
-        DeactivatePlayers();
-
-        if (!_tiebreaker)
-            _roundPanel.SetActive(true);
-        else
-            _winnerPanel.SetWinner(curWinner.gameObject, curWinner.playerIndex + 1);
-    }
-
-    //TODO: With end round panel active, any player must press A to continue
-    private void StartRound()
-    {
-        if (!_tiebreaker)
-        {
-            _curRound++;
-            if (_curRound <= _numberRounds)
-                _countdown.Begin(6);
-            else
-                EndGame();
-        }
-        else // Tiebreaker round
-        {
-            _countdown.Begin(6);
-        }
-    }
-
-    private void EndGame()
-    {
-       PlayerInput winner =  GetWinner();
-
-        if (winner != null)
-        {
-            _winnerPanel.SetWinner(winner.gameObject, winner.playerIndex+1);
-        }
-        else // Null winner means tiebreaker round
-        {
-            // Start last round
-            StartRound();
-        }
-    }
-
-    private PlayerInput GetWinner()
-    {
-        PlayerInput winner = null;
-
+        PlayerInput playerInput = null;
         int victories, maxVictories = -1;
 
         // Check who won or if need a tiebreaker
@@ -209,38 +79,99 @@ public class MultiplayerManager : MonoBehaviour
             {
                 // Set winner 
                 maxVictories = victories;
-                winner = p;
-
-                _tiebreaker = false;
-                // Add player for a possible tiebreaker
-                _tiebreakerPlayers.Add(p);
-            }
-            else if (victories == maxVictories)
-            {
-                winner = null;
-
-                _tiebreaker = true;
-                _tiebreakerPlayers.Add(p);
+                playerInput = p;
             }
         }
 
-        return winner;
+        winner = playerInput.gameObject;
+
+        return playerInput.playerIndex;
+    }
+
+    public void ActivatePlayers()
+    {
+        _playersCount = 0;
+        foreach (PlayerInput p in _playersInputs)
+        {
+            // Activate player
+            p.gameObject.SetActive(true);
+            p.ActivateInput();
+            _playersCount++;
+            _alivePlayers[p.playerIndex] = true;
+        }
+    }
+
+    public void DeactivatePlayers()
+    {
+        foreach (PlayerInput p in _playersInputs)
+        {
+            // Deactivate player
+            DeactivatePlayer(p);
+        }
+    }
+
+    private void DeactivatePlayer(PlayerInput playerInput)
+    {
+        // Deactivate input and game object
+        playerInput.gameObject.SetActive(false);
+        playerInput.DeactivateInput();
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        _playerCount++;
-
+        // Set parent for player gameobject 
         playerInput.transform.SetParent(transform);
-
+        // Player index
         int index = playerInput.playerIndex;
+        // Place player in position
+        playerInput.gameObject.transform.position = _spawnPoints[index].position;
+        // Restart player health and item
+        playerInput.gameObject.GetComponent<PlayerController>().Restart();
         // Setup player's UI
         _playersHUD[index].Setup(playerInput.gameObject);
         _playersFollowers[index].Setup(playerInput.gameObject);
         _playersScores[index].Setup(playerInput.gameObject);
+    }
 
-        playerInput.GetComponentInChildren<PlayerHealth>().onDied.AddListener(PlayerDied);
+    private void InstantiatePlayersWithSetDevices()
+    {
+        // Get the number of players joined in selection screen
+        int playersCount = PlayerPrefs.GetInt("players_count");
+        string devicePath = null;
+        string controlScheme = null;
 
-        DeactivatePlayer(playerInput);
+        for (int i = 0; i < playersCount; i++)
+        {
+            devicePath = PlayerPrefs.GetString("player_" + i + "_device", null);
+            controlScheme = PlayerPrefs.GetString("player_" + i + "_controlScheme", null);
+
+            if (devicePath != null && controlScheme != null)
+            {
+                // Get character prefab for player
+                int character = PlayerPrefs.GetInt("player_" + i + "_character");
+                _playerInputManager.playerPrefab = _playersPrefabs[character];
+
+                // Instantiate player with device
+                PlayerInput playerInput = _playerInputManager.JoinPlayer(i,
+                    pairWithDevice: InputSystem.GetDevice(devicePath), controlScheme: controlScheme);
+                // Add to playerInput list
+                _playersInputs.Add(playerInput);
+
+                DeactivatePlayer(playerInput);
+
+                SetOnDiedEvent(playerInput);
+
+                _playersCount++;
+            }
+        }
+    }
+
+    private void SetOnDiedEvent(PlayerInput playerInput)
+    {
+        PlayerHealth health = playerInput.gameObject.GetComponentInChildren<PlayerHealth>();
+        // Set player index
+        health.playerIndex = playerInput.playerIndex;
+        // Add listener for player death
+        health.onDied.AddListener(PlayerDied);
     }
 }

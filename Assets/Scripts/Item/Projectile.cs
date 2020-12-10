@@ -1,40 +1,45 @@
 ﻿using UnityEngine;
+using CustomColor;
 
-public class Projectile : MonoBehaviour
+namespace Items
 {
-    [SerializeField]
-    private SpriteRenderer _baseSpriteRenderer;
-
-    [SerializeField]
-    private Rigidbody2D _rigidbody2D;
-
-    [SerializeField]
-    private float _speed = 10f;
-
-    [HideInInspector]
-    public ColorOption colorOption;
-
-    private void Update()
+    public class Projectile : MonoBehaviour
     {
-        _rigidbody2D.velocity = transform.right * _speed;
-    }
+        [SerializeField]
+        private SpriteRenderer _baseSpriteRenderer;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Grid"))
+        [SerializeField]
+        private Rigidbody2D _rigidbody2D;
+
+        [SerializeField]
+        private float _speed = 10f;
+
+        [HideInInspector]
+        public ColorOption colorOption;
+
+        private void Update()
         {
-            Destroy(gameObject);
+            _rigidbody2D.velocity = transform.right * _speed;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Grid"))
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void ChangeColor(ColorOption option, Color color)
+        {
+            colorOption = option;
+            _baseSpriteRenderer.color = color;
+        }
+
+        public int GetRelativeDamage(ColorOption target)
+        {
+            return ColorManager.Instance.colorTable.GetRelativeDamage(colorOption, target);
         }
     }
 
-    public void ChangeColor(ColorOption option, Color color)
-    {
-        colorOption = option;
-        _baseSpriteRenderer.color = color;
-    }
-
-    public int GetRelativeDamage(ColorOption target)
-    {
-        return ColorManager.Instance.colorTable.GetRelativeDamage(colorOption, target);
-    }
 }
