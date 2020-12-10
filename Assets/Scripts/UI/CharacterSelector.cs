@@ -1,113 +1,119 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterSelector : MonoBehaviour
+namespace Selection
 {
-    [SerializeField]
-    private Characters _characters;
-
-    [SerializeField]
-    private GameObject _joined;
-
-    [SerializeField]
-    private Image _leftArrow, _rightArrow;
-
-    [SerializeField]
-    private Image _characterImage;
-
-    private int _curIndex = -1;
-
-    public bool Available { get; private set; }
-
-    private void Awake()
+    public class CharacterSelector : MonoBehaviour
     {
-        if (_characters == null)
-            Debug.LogError("Missing characters object reference.");
+        [SerializeField]
+        private CharactersContainer _characters;
 
-        Available = true;
-    }
+        [SerializeField]
+        private GameObject _joined;
 
-    public int Joined()
-    {
-        _joined.SetActive(true);
-        Available = false;
+        [SerializeField]
+        private Image _leftArrow, _rightArrow;
 
-        NextCharacter();
+        [SerializeField]
+        private Image _characterImage;
 
-        return _curIndex;
-    }
+        private int _curIndex = -1;
 
-    public void Left()
-    {
-        _joined.SetActive(false);
-        Available = true;
-        SetCharacterToAvailable(_curIndex);
-    }
+        public bool Available { get; private set; }
 
-    public int NextCharacter()
-    {
-        // Keep the previous character index
-        int prevIndex = _curIndex;
-        do
+        private void Awake()
         {
-            _curIndex++;
-            if (_curIndex >= _characters.list.Length)
-                _curIndex = 0;
+            if (_characters == null)
+                Debug.LogError("Missing characters object reference.");
+
+            Available = true;
         }
-        while (!_characters.list[_curIndex].available);
 
-        ArrowBlink(_rightArrow);
-        // If had a previous index, define it as available
-        SetCharacterToAvailable(prevIndex);
-        // Set current character
-        SetCharacter();
-
-        return _curIndex;
-    }
-
-    public int PreviousCharacter()
-    {
-        // Keep the previous character index
-        int prevIndex = _curIndex;
-        do
+        public int Joined()
         {
-            _curIndex--;
-            if (_curIndex < 0)
-                _curIndex = _characters.list.Length - 1;
+            AudioManager.Instance.Play("select");
+
+            _joined.SetActive(true);
+            Available = false;
+
+            NextCharacter();
+
+            return _curIndex;
         }
-        while (!_characters.list[_curIndex].available);
 
-        ArrowBlink(_leftArrow);
+        public void Left()
+        {
+            _joined.SetActive(false);
+            Available = true;
+            SetCharacterToAvailable(_curIndex);
+        }
 
-        // If had a previous index, define it as available
-        SetCharacterToAvailable(prevIndex);
-        // Set current character
-        SetCharacter();
+        public int NextCharacter()
+        {
+            // Keep the previous character index
+            int prevIndex = _curIndex;
+            do
+            {
+                _curIndex++;
+                if (_curIndex >= _characters.list.Length)
+                    _curIndex = 0;
+            }
+            while (!_characters.list[_curIndex].available);
 
-        return _curIndex;
-    }
+            ArrowBlink(_rightArrow);
+            // If had a previous index, define it as available
+            SetCharacterToAvailable(prevIndex);
+            // Set current character
+            SetCharacter();
 
-    private void SetCharacter()
-    {
-        _characterImage.sprite = _characters.list[_curIndex].sprite;
-        _characters.list[_curIndex].available = false;
-    }
+            return _curIndex;
+        }
 
-    private void SetCharacterToAvailable(int index)
-    {
-        if (index != -1)
-            _characters.list[index].available = true;
-    }
+        public int PreviousCharacter()
+        {
+            // Keep the previous character index
+            int prevIndex = _curIndex;
+            do
+            {
+                _curIndex--;
+                if (_curIndex < 0)
+                    _curIndex = _characters.list.Length - 1;
+            }
+            while (!_characters.list[_curIndex].available);
 
-    private void ArrowBlink(Image arrow)
-    {
-        arrow.color = Color.black;
-        Invoke("ReturnToWhite", .1f);
-    }
+            ArrowBlink(_leftArrow);
 
-    private void ReturnToWhite()
-    {
-        _leftArrow.color = Color.white;
-        _rightArrow.color = Color.white;
+            // If had a previous index, define it as available
+            SetCharacterToAvailable(prevIndex);
+            // Set current character
+            SetCharacter();
+
+            return _curIndex;
+        }
+
+        private void SetCharacter()
+        {
+            _characterImage.sprite = _characters.list[_curIndex].sprite;
+            _characters.list[_curIndex].available = false;
+        }
+
+        private void SetCharacterToAvailable(int index)
+        {
+            if (index != -1)
+                _characters.list[index].available = true;
+        }
+
+        private void ArrowBlink(Image arrow)
+        {
+            AudioManager.Instance.Play("select");
+            arrow.color = Color.black;
+            Invoke("ReturnToWhite", .1f);
+        }
+
+        private void ReturnToWhite()
+        {
+            _leftArrow.color = Color.white;
+            _rightArrow.color = Color.white;
+        }
     }
 }

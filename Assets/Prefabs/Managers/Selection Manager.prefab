@@ -44,6 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1194591345724b838ff24b05999b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterSelectors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _startInfo: {fileID: 0}
   _joinAction:
     m_Name: Join
     m_Type: 0
@@ -117,22 +123,19 @@ MonoBehaviour:
       m_Action: Main Menu
       m_Flags: 0
     - m_Name: 
-      m_Id: 1b17836c-5bec-4f49-9256-da6becb56222
-      m_Path: <Gamepad>/buttonEast
+      m_Id: 66dc791d-15c4-4c1e-a8aa-58426d8456d7
+      m_Path: <Gamepad>/buttonNorth
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Main Menu
       m_Flags: 0
-  _startInfo: {fileID: 0}
-  _onStartGame:
+  _onStart:
     m_PersistentCalls:
       m_Calls: []
-  _characterSelectors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _onMainMenu:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4604123223912004915
 MonoBehaviour:
   m_ObjectHideFlags: 0
