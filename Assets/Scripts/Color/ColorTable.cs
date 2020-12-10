@@ -20,7 +20,7 @@ namespace CustomColor
         {
             if (targetColor == ColorOption.None)
             {
-                return _defaultDamage;
+                return _relativeDamage;
             }
 
             foreach (ColorRow row in _colorRows)
