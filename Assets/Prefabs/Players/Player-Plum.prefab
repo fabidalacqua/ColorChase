@@ -691,7 +691,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animation: {fileID: 718166658019471002}
   _maxHealth: 2
-  _invulnerableTime: 2
-  onDied:
-    m_PersistentCalls:
-      m_Calls: []
+  _invulnerableTime: 0.05
+  playerIndex: -1

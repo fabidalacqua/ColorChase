@@ -496,6 +496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerImg: {fileID: 1192039042600850333}
   _playerLabel: {fileID: 8608599971221905918}
+  _infoText: {fileID: 4628104146866882442}
+  _cameraAudioSource: {fileID: 0}
 --- !u!1001 &8608599971984612166
 PrefabInstance:
   m_ObjectHideFlags: 0

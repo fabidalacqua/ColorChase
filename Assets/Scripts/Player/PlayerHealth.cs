@@ -12,7 +12,7 @@ namespace Player
         private int _maxHealth = 2;
 
         [SerializeField]
-        private float _invulnerableTime = 2f;
+        private float _invulnerableTime = .05f;
 
         private int _health;
 
@@ -38,20 +38,6 @@ namespace Player
             _health = _maxHealth;
         }
 
-        private void Update()
-        {
-            if (!_isVulnerable)
-            {
-                _timer += Time.deltaTime;
-
-                if (_timer >= _invulnerableTime)
-                {
-                    _isVulnerable = true;
-                    _timer = 0;
-                }
-            }
-        }
-
         public void TakeDamage(int damage = 1)
         {
             if (_isVulnerable)
@@ -61,7 +47,9 @@ namespace Player
                 _animation.Hurt();
 
                 _health -= damage;
+
                 _isVulnerable = false;
+                Invoke("SetVulnerable", _invulnerableTime);
 
                 if (onTakeDamage != null)
                     onTakeDamage.Invoke(_health);
@@ -75,6 +63,10 @@ namespace Player
                 }
             }
         }
-    }
 
+        private void SetVulnerable()
+        {
+            _isVulnerable = true;
+        }
+    }
 }

@@ -35,6 +35,8 @@ namespace PlayerUI
                 // Listeners for pick and throwing item
                 _playerItem.onPickUp.AddListener(PickUp);
                 _playerItem.onThrow.AddListener(Throw);
+
+                gameObject.SetActive(true);
             }
 
             Restart();
