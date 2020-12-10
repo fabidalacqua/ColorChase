@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 5038719424434291560, guid: 7740eb33e78e92a49b9901b08bc6c63c, type: 3}
     - target: {fileID: 487302711075079247, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 718166658019471002, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: idleBaseSprite
@@ -109,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: -2133892350014591062, guid: 54c437ab4f1807f429b50a98d9edd21d, type: 3}
     - target: {fileID: 6114133801069349226, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6580260153239965871, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Size.x
