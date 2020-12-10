@@ -62,6 +62,11 @@ namespace PlayerUI
             ChangeColor(ColorManager.Instance.GetColor(ColorOption.None));
         }
 
+        public void Deactivate()
+        {
+            gameObject.SetActive(false);
+        }
+
         private void ChangeColor(Color color)
         {
             // Change player color
@@ -82,6 +87,7 @@ namespace PlayerUI
         {
             // Set active true to deadPlayer image
             _deadPlayer.gameObject.SetActive(true);
+            ChangeColor(ColorManager.Instance.GetColor(ColorOption.None));
         }
     }
 

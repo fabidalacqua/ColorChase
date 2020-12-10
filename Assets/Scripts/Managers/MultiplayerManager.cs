@@ -68,12 +68,15 @@ public class MultiplayerManager : MonoBehaviour
         }
     }
 
-    private void DeadPlayer(int playerIndex)
+    private void DeadPlayer(int playerIndex, bool tie = false)
     {
         _playersCount--;
         _alivePlayers[playerIndex] = false;
         DeactivatePlayer(_playersInputs[playerIndex]);
         _playersFollowers[playerIndex].Restart();
+
+        if (tie) // Remove HUD from player not in tie
+             _playersHUD[playerIndex].Deactivate();
     }
  
     private void SetRoundWinner()
@@ -133,7 +136,7 @@ public class MultiplayerManager : MonoBehaviour
         {
             // Remove player from tiebreaker
             if (!_tiebreakerPlayerIndex.Contains(p.playerIndex))
-                DeadPlayer(p.playerIndex);
+                DeadPlayer(p.playerIndex, true);
             else // Set score for tiebreakers player to zero
                 p.GetComponent<PlayerController>().ScoreToZero();
         }

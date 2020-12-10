@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         if (_tiebreaker)
         {
             _curRound = 1;
-            Debug.Log("Begin tiebreaker");
             _countdown.Begin(_countdownTime, true);
         }
         else // Normal round
@@ -111,7 +110,6 @@ public class GameManager : MonoBehaviour
 
         if (_tiebreaker)
         {
-            Debug.Log("End tiebreaker");
             EndGame();
         }
         else
