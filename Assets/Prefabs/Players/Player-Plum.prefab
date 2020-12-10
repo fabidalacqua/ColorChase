@@ -131,7 +131,7 @@ MonoBehaviour:
     m_Bits: 55
   _groundCheck: {fileID: 59552685506532888}
   _wallCheck: {fileID: 512716094058307051}
-  _dashSpeed: 30
+  _dashSpeed: 25
   _canDashTimer: 0.2
 --- !u!114 &59552687051190060
 MonoBehaviour:
@@ -148,6 +148,9 @@ MonoBehaviour:
   _playerMovement: {fileID: 59552687051190061}
   _playerHealth: {fileID: 5182100030989638500}
   _playerItem: {fileID: 5593914416945715507}
+  onScoreVictory:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &59552687051190063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +398,12 @@ MonoBehaviour:
   _animation: {fileID: 718166658019471002}
   _spriteRenderer: {fileID: 6114133801069349226}
   _throwPoint: {fileID: 649541494782588398}
+  onPickUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onThrow:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3335580420571630281
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,4 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animation: {fileID: 718166658019471002}
   _maxHealth: 2
-  _invulnerableTime: 2
+  _invulnerableTime: 1
+  onDied:
+    m_PersistentCalls:
+      m_Calls: []
