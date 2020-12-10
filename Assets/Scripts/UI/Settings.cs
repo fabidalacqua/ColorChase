@@ -23,11 +23,13 @@ public class Settings : MonoBehaviour
 
     private ColorType _colorType;
 
-    private void Awake()
+    private void Start()
     {
-        SetSlider(PlayerPrefs.GetFloat("volume", 1f));
+        float volume = 1;
+        audioMixer.GetFloat("volume", out volume);
+        SetSlider(volume);
 
-        SetToogle(PlayerPrefs.GetInt("colorType", 0) == 1 ? true : false);
+        SetToogle(ColorManager.Instance.GetActiveColorType() == 1 ? true : false);
        
         _saveButton.gameObject.SetActive(false);
     }
@@ -35,9 +37,6 @@ public class Settings : MonoBehaviour
     public void SetVolume(float volume)
     {
         SetSlider(volume);
-
-        PlayerPrefs.SetFloat("volume", volume);
-
         AudioManager.Instance.Play("select");
     }
 
@@ -46,7 +45,8 @@ public class Settings : MonoBehaviour
         SetToogle(colorblind);
 
         // Must save (reload scene) to if color changed
-        _saveButton.gameObject.SetActive(PlayerPrefs.GetInt("colorType", 0) != (int)_colorType);
+        _saveButton.gameObject.SetActive(
+            ColorManager.Instance.GetActiveColorType() != (int)_colorType);
 
         AudioManager.Instance.Play("select");
     }
@@ -65,8 +65,6 @@ public class Settings : MonoBehaviour
     public void Save()
     {
         ColorManager.Instance.SetColorPalette(_colorType);
-        PlayerPrefs.SetInt("colorType", (int)_colorType);
-
         // Reaload scene
         if (_onSave != null)
             _onSave.Invoke();

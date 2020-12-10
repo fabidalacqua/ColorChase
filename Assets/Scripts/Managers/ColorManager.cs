@@ -19,7 +19,7 @@ namespace CustomColor
             {
                 Instance = this;
 
-                SetColorPalette((ColorType)PlayerPrefs.GetInt("colorType", 0));
+                SetColorPalette(ColorType.Default);
 
                 DontDestroyOnLoad(gameObject);
             }
@@ -27,6 +27,11 @@ namespace CustomColor
             {
                 Destroy(gameObject);
             }
+        }
+
+        public int GetActiveColorType()
+        {
+            return (int)_active.palette;
         }
 
         public void SetColorPalette(ColorType colorType)
