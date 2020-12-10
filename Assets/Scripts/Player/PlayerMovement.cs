@@ -158,14 +158,8 @@ namespace Player
         private void SetCanDashToTrue()
         {
             _canDash = true;
-            _rigidbody2D.velocity = Vector2.zero;
+            // _rigidbody2D.velocity = Vector2.zero;
         }
-   
-    private void SetCanDashToTrue()
-    {
-        _canDash = true;
-        // _rigidbody2D.velocity = Vector2.zero;
-    }
 
         public void Dash()
         {
