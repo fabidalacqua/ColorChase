@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 8327988098171491684, guid: 0acd97ec2258660458d40f9182398ed2, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 5756072235058152801}
+      objectReference: {fileID: 0}
     - target: {fileID: 8327988098171491684, guid: 0acd97ec2258660458d40f9182398ed2, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -353,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 8327988098171491684, guid: 0acd97ec2258660458d40f9182398ed2, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 5756072234783729913}
+      objectReference: {fileID: 0}
     - target: {fileID: 8327988098171491684, guid: 0acd97ec2258660458d40f9182398ed2, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
