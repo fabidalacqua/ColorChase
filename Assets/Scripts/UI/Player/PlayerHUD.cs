@@ -78,7 +78,7 @@ namespace PlayerUI
             }
         }
 
-        private void Died()
+        private void Died(int index = -1)
         {
             // Set active true to deadPlayer image
             _deadPlayer.gameObject.SetActive(true);

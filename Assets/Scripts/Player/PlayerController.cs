@@ -23,9 +23,6 @@ namespace Player
         public int VictoriesCount { get; private set; }
 
         [HideInInspector]
-        public IntUnityEvent onWonRound = new IntUnityEvent();
-
-        [HideInInspector]
         public UnityEvent onScoreVictory = new UnityEvent();
 
         private void Awake()
@@ -34,26 +31,19 @@ namespace Player
             VictoriesCount = 0;
         }
 
-        private void Start()
-        {
-            onWonRound.AddListener(ScoreVictory);
-
-            _playerHealth.onDied.AddListener(Deactivate);
-        }
-
-        private void Deactivate()
-        {
-            // Deativate player
-            gameObject.SetActive(false);
-        }
-
-        private void ScoreVictory(int roundNumber)
+        public void ScoreVictory(int roundNumber)
         {
             Victories[roundNumber - 1] = true;
             VictoriesCount++;
 
             if (onScoreVictory != null)
                 onScoreVictory.Invoke();
+        }
+
+        public void Restart()
+        {
+            _playerHealth.Restart();
+            _playerItem.Restart();
         }
 
         #region Input Handler

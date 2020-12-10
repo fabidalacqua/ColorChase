@@ -33,14 +33,15 @@ namespace Player
 
         public ColorUnityEvent onChangeColor = new ColorUnityEvent();
 
-        private void Awake()
+        private void Start()
+        {
+            Restart();
+        }
+
+        public void Restart()
         {
             ColorOption = ColorOption.None;
             Item = null;
-        }
-
-        private void Start()
-        {
             ChangePlayerColor(ColorOption);
         }
 

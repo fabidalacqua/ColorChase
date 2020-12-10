@@ -20,11 +20,20 @@ namespace Player
 
         private float _timer = 0;
 
+        [HideInInspector]
         public IntUnityEvent onTakeDamage = new IntUnityEvent();
 
-        public UnityEvent onDied = new UnityEvent();
+        [HideInInspector]
+        public IntUnityEvent onDied = new IntUnityEvent();
+
+        public int playerIndex = -1;
 
         private void Start()
+        {
+            Restart();
+        }
+
+        public void Restart()
         {
             _health = _maxHealth;
         }
@@ -62,7 +71,7 @@ namespace Player
                     AudioManager.Instance.Play("die");
 
                     if (onDied != null)
-                        onDied.Invoke();
+                        onDied.Invoke(playerIndex);
                 }
             }
         }

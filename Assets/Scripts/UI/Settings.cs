@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using CustomColor;
 
-public class SettingsController : MonoBehaviour
+public class Settings : MonoBehaviour
 {
     [SerializeField]
     private AudioMixer audioMixer;

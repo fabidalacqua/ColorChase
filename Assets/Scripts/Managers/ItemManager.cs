@@ -17,6 +17,11 @@ namespace Items
 
         public List<Item> items;
 
+        [HideInInspector]
+        public bool roundStarted = false;
+
+        private List<GameObject> _instantiatedItems = new List<GameObject>();
+
         private float _timer;
 
         private void Awake()
@@ -26,6 +31,8 @@ namespace Items
 
             if (items == null || items.Count == 0)
                 Debug.LogError("Missing items.");
+
+
         }
 
         private void Update()
@@ -42,7 +49,7 @@ namespace Items
         {
             _timer += Time.deltaTime;
 
-            if (_timer >= spawnTime)
+            if (_timer >= spawnTime && roundStarted)
             {
                 _timer = 0;
                 if (HasEmptySpawnPoint())
@@ -68,8 +75,8 @@ namespace Items
             while (!IsSpawnPointValid(spawnPoints[indexPos]));
 
             // Instantiate item in spawn point position
-            Instantiate(items[indexItem].gameObject,
-                spawnPoints[indexPos].position, items[indexItem].transform.rotation);
+            _instantiatedItems.Add(Instantiate(items[indexItem].gameObject,
+                spawnPoints[indexPos].position, items[indexItem].transform.rotation));
         }
 
         private bool IsSpawnPointValid(Transform point)
@@ -91,6 +98,14 @@ namespace Items
                 }
             }
             return false;
+        }
+
+        public void DestroyAll()
+        {
+            foreach (GameObject go in _instantiatedItems)
+                Destroy(go);
+
+            _instantiatedItems.Clear();
         }
     }
 }

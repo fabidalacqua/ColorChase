@@ -21,6 +21,8 @@ namespace PlayerUI
                 // Add listener to player score
                 _playerController = player.GetComponent<PlayerController>();
                 _playerController.onScoreVictory.AddListener(UpdateScore);
+
+                gameObject.SetActive(true);
             }
         }
 
