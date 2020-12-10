@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     private bool _gameOver = false;
 
+    private bool _tiebreaker = false;
+
     private void Start()
     {
         // Add listener to be called when only one player are still alive
@@ -62,6 +64,11 @@ public class GameManager : MonoBehaviour
     {
         _multiplayerManager.ActivatePlayers();
         _itemManager.roundStarted = true;
+        // Enable pause action
+        EnablePause();
+        // Remove players from tiebreaker
+        if (_tiebreaker)
+            _multiplayerManager.SetPlayersForTiebreaker();
     }
 
     private void NextRound()
@@ -73,32 +80,52 @@ public class GameManager : MonoBehaviour
         // Disable confirm Action
         DisableConfirm();
 
-        _curRound++;
-        if (_curRound <= _numberRounds)
-            _countdown.Begin(_countdownTime);
-        else
-            EndGame();
+        if (_tiebreaker)
+        {
+            _curRound = 1;
+            Debug.Log("Begin tiebreaker");
+            _countdown.Begin(_countdownTime, true);
+        }
+        else // Normal round
+        {
+            _curRound++;
+            if (_curRound <= _numberRounds)
+                _countdown.Begin(_countdownTime);
+            else
+                EndGame();
+        }
     }
 
     private void EndRound()
     {
-        // Get round winner and set score
-        GameObject player = _multiplayerManager.GetRoundWinner();
-        
+        // Disable pause action
+        DisablePause();
+
+        // Get round winner
+        GameObject player = _multiplayerManager.Winner;
         if (player != null)
         {
+            // Set score
             player.GetComponent<PlayerController>().ScoreVictory(_curRound);
         }
 
-        // Show end round panel
-        _roundPanel.SetActive(true);
+        if (_tiebreaker)
+        {
+            Debug.Log("End tiebreaker");
+            EndGame();
+        }
+        else
+        {
+            // Show end round panel
+            _roundPanel.SetActive(true);
 
-        // Stop item manager and destroy remaining items
-        _itemManager.roundStarted = false;
-        _itemManager.DestroyAll();
+            // Stop item manager and destroy remaining items
+            _itemManager.roundStarted = false;
+            _itemManager.DestroyAll();
 
-        // Enable confirm action
-        EnableConfirm();
+            // Enable confirm action
+            EnableConfirm();
+        }
     }
 
     private void EndGame()
@@ -108,10 +135,23 @@ public class GameManager : MonoBehaviour
         // Get winner player
         GameObject winner = null;
         int winnerIndex = _multiplayerManager.GetGameWinner(out winner);
-        // Set values for winner panel
-        _winnerPanel.SetWinner(winner, winnerIndex + 1);
 
-        Invoke("EnableGameOver", 3f);
+        if (winnerIndex >= 0)
+        {
+            // Set values for winner panel
+            _winnerPanel.SetWinner(winner, winnerIndex + 1);
+            Invoke("EnableGameOver", 3f);
+        }
+        else
+        {
+            Tiebreaker();
+        }
+    }
+
+    private void Tiebreaker()
+    {
+        _tiebreaker = true;
+        NextRound();
     }
 
     private void EnableGameOver()
@@ -156,16 +196,14 @@ public class GameManager : MonoBehaviour
         _confirmAction.started -= Confirm;
     }
 
-    private void OnEnable()
+    private void EnablePause()
     {
-        // Enable join action and subscribe to event
         _pauseAction.Enable();
         _pauseAction.started += Pause;
     }
 
-    private void OnDisable()
+    private void DisablePause()
     {
-        // Disable join action and unsubscribe to event
         _pauseAction.Disable();
         _pauseAction.started -= Pause;
     }

@@ -42,7 +42,7 @@ namespace PlayerUI
             Restart();
         }
 
-        private void Restart()
+        public void Restart()
         {
             // Set active false to all items
             for (int i = 0; i < _items.Length; i++)

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _multiplayerManager: {fileID: 0}
+  _itemManager: {fileID: 0}
   _countdown: {fileID: 0}
   _roundPanel: {fileID: 0}
   _winnerPanel: {fileID: 0}
@@ -52,7 +53,7 @@ MonoBehaviour:
   _onPause:
     m_PersistentCalls:
       m_Calls: []
-  _onLastRound:
+  _onGameOver:
     m_PersistentCalls:
       m_Calls: []
   _confirmAction:
@@ -89,15 +90,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 1cf72d8a-09a2-4db7-8cc0-2cb369e05de1
-      m_Path: <Keyboard>/escape
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Pause
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 9116f7a6-3bce-4203-b669-ba156af67b8b
-      m_Path: <Keyboard>/backspace
+      m_Path: <Keyboard>/p
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -105,7 +98,7 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: 6184e4db-3987-4cd4-9671-44dc094b307b
-      m_Path: <Gamepad>/select
+      m_Path: <Gamepad>/start
       m_Interactions: 
       m_Processors: 
       m_Groups: 

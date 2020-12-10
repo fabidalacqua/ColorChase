@@ -40,6 +40,12 @@ namespace Player
                 onScoreVictory.Invoke();
         }
 
+        public void ScoreToZero()
+        {
+            VictoriesCount = 0;
+            Victories = new bool[] { false, false, false, false };
+        }
+
         public void Restart()
         {
             _playerHealth.Restart();

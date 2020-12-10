@@ -155,6 +155,7 @@ namespace Player
                 //_animation.Jump();
             }
         }
+
         private void SetCanDashToTrue()
         {
             _canDash = true;

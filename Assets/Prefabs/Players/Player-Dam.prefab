@@ -16,12 +16,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 59552687051190048, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190048, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190048, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.96
       objectReference: {fileID: 0}
     - target: {fileID: 59552687051190048, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -7.56
       objectReference: {fileID: 0}
     - target: {fileID: 59552687051190048, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -59,6 +67,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player-Dam
       objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190053, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190061, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: _dashSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 487302711075079247, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -95,6 +111,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 76d83d2fcdb65fb4583d96b43f42ad8b, type: 2}
+    - target: {fileID: 5182100030989638500, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: _invulnerableTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6114133801069349226, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Sprite
       value: 

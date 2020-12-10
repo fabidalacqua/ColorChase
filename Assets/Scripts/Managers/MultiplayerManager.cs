@@ -26,6 +26,8 @@ public class MultiplayerManager : MonoBehaviour
     [HideInInspector]
     public UnityEvent onLastPlayerStanding = new UnityEvent();
 
+    public GameObject Winner {get; private set; }
+
     private PlayerInputManager _playerInputManager;
 
     private int _numberPlayers = 0;
@@ -36,11 +38,16 @@ public class MultiplayerManager : MonoBehaviour
 
     private bool[] _alivePlayers;
 
+    private List<int> _tiebreakerPlayerIndex;
+
+    private bool _tie = false;
+
     private void Awake()
     {
         _playerInputManager = GetComponent<PlayerInputManager>();
         _playersInputs = new List<PlayerInput>();
         _alivePlayers = new bool[] { true, true, true, true };
+        _tiebreakerPlayerIndex = new List<int>();
     }
 
     private void Start()
@@ -51,44 +58,85 @@ public class MultiplayerManager : MonoBehaviour
 
     private void PlayerDied(int playerIndex)
     {
-        _playersCount--;
-        _alivePlayers[playerIndex] = false;
+        DeadPlayer(playerIndex);
 
-        if (_playersCount <= 1 && onLastPlayerStanding != null)
-            onLastPlayerStanding.Invoke();
+        if (_playersCount == 1)
+        {
+            SetRoundWinner();
+            if (onLastPlayerStanding != null)
+                onLastPlayerStanding.Invoke();
+        }
     }
 
-    public GameObject GetRoundWinner()
+    private void DeadPlayer(int playerIndex)
     {
-        GameObject winner = null;
+        _playersCount--;
+        _alivePlayers[playerIndex] = false;
+        DeactivatePlayer(_playersInputs[playerIndex]);
+        _playersFollowers[playerIndex].Restart();
+    }
+ 
+    private void SetRoundWinner()
+    {
+        Winner = null;
         for (int i = 0; i < _numberPlayers; i++)
         {
             if (_alivePlayers[i])
-                winner = _playersInputs[i].gameObject;
+                Winner = _playersInputs[i].gameObject;
         }
-        return winner;
     }
 
     public int GetGameWinner(out GameObject winner)
     {
         PlayerInput playerInput = null;
         int victories, maxVictories = -1;
+        // Change tie to false
+        _tie = false;
 
         // Check who won or if need a tiebreaker
-        foreach (PlayerInput p in _playersInputs)
+        for (int i = 0; i < _playersInputs.Count && !_tie; i++) 
         {
-            victories = p.GetComponent<PlayerController>().VictoriesCount;
+            victories = _playersInputs[i].GetComponent<PlayerController>().VictoriesCount;
             if (victories > maxVictories)
             {
                 // Set winner 
                 maxVictories = victories;
-                playerInput = p;
+                playerInput = _playersInputs[i];
+                _tie = false;
+                _tiebreakerPlayerIndex.Clear();
+                _tiebreakerPlayerIndex.Add(i);
+            }
+            else if (victories == maxVictories)
+            {
+                _tie = true;
+                _tiebreakerPlayerIndex.Add(i);
             }
         }
 
-        winner = playerInput.gameObject;
+        if (_tie)
+        {
+            // No winner, need tiebreaker
+            winner = null;
+            return -1;
+        }
+        else
+        {
+            // Return winner
+            winner = playerInput.gameObject;
+            return playerInput.playerIndex;
+        }
+    }
 
-        return playerInput.playerIndex;
+    public void SetPlayersForTiebreaker()
+    {
+        foreach (PlayerInput p in _playersInputs)
+        {
+            // Remove player from tiebreaker
+            if (!_tiebreakerPlayerIndex.Contains(p.playerIndex))
+                DeadPlayer(p.playerIndex);
+            else // Set score for tiebreakers player to zero
+                p.GetComponent<PlayerController>().ScoreToZero();
+        }
     }
 
     public void ActivatePlayers()
@@ -96,12 +144,17 @@ public class MultiplayerManager : MonoBehaviour
         _playersCount = 0;
         foreach (PlayerInput p in _playersInputs)
         {
-            // Activate player
-            p.gameObject.SetActive(true);
-            p.ActivateInput();
-            _playersCount++;
-            _alivePlayers[p.playerIndex] = true;
+            ActivatePlayer(p);
         }
+    }
+
+    private void ActivatePlayer(PlayerInput playerInput)
+    {
+        // Activate player
+        playerInput.gameObject.SetActive(true);
+        playerInput.ActivateInput();
+        _alivePlayers[playerInput.playerIndex] = true;
+        _playersCount++;
     }
 
     public void DeactivatePlayers()
