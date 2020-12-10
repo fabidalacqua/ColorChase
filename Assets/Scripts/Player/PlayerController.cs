@@ -19,8 +19,10 @@ public class PlayerController : MonoBehaviour
 
     public int VictoriesCount { get; private set; }
 
+    [HideInInspector]
     public IntUnityEvent onWonRound = new IntUnityEvent();
 
+    [HideInInspector]
     public UnityEvent onScoreVictory = new UnityEvent();
 
     private void Awake()

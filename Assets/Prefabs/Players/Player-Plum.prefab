@@ -131,7 +131,7 @@ MonoBehaviour:
     m_Bits: 55
   _groundCheck: {fileID: 59552685506532888}
   _wallCheck: {fileID: 512716094058307051}
-  _dashSpeed: 25
+  _dashSpeed: 30
   _canDashTimer: 0.2
 --- !u!114 &59552687051190060
 MonoBehaviour:
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 9ff7f66137c00d44a82f016e9054e60b, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 2c2a7735d66d3e34886d309f437cbd5d, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -190,8 +190,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: e7be6ba4-4c68-48f9-a061-228d8af454ec
-    m_ActionName: Gameplay/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]
+    m_ActionId: b73a73f7-ea2b-47bb-bdac-90741ddd7699
+    m_ActionName: Gameplay/Move[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right,/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 59552687051190060}
@@ -206,28 +206,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: fa8c4c3b-e328-49ec-8bd5-7ec43c8bc582
-    m_ActionName: Gameplay/Jump[/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5f24a8dc-6437-4a3d-8000-a8f57ee98d01
-    m_ActionName: Menu/Join[/Keyboard/a,/Keyboard/leftArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 59552687051190060}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnThrow
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7f3ad788-6493-4474-9283-ee0fcbd818ab
-    m_ActionName: Gameplay/Throw[/Keyboard/space]
+    m_ActionId: 4ead98a4-965b-4f63-89fa-125b37660840
+    m_ActionName: Gameplay/Jump[/DualShock4GamepadHID/buttonSouth,/Keyboard/w,/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 59552687051190060}
@@ -242,8 +222,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 76607c69-7a9b-4cbb-b540-c2ef4e6776ed
-    m_ActionName: Gameplay/Dash
+    m_ActionId: df63c666-0808-4a26-bf89-55aeae189623
+    m_ActionName: Gameplay/Dash[/DualShock4GamepadHID/rightTrigger,/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 59552687051190060}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c8531c8-4011-4e77-8922-f1dda8f81f0a
+    m_ActionName: Gameplay/Throw[/DualShock4GamepadHID/buttonEast,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 524642d6-2718-4072-9b20-4ef443e9cd33
+    m_ActionName: Selection/LeftArrow[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/leftStick/left,/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 965ae75c-55b4-42e9-8b00-61287ac2223e
+    m_ActionName: Selection/RightArrow[/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/right,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -687,7 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animation: {fileID: 718166658019471002}
   _maxHealth: 2
-  _invulnerableTime: 1
+  _invulnerableTime: 2
   onDied:
     m_PersistentCalls:
       m_Calls: []

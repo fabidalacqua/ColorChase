@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 28fe726cc57e6ae4687e9de56418c25c, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 2c2a7735d66d3e34886d309f437cbd5d, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -71,12 +71,24 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 32ad5ede-f299-4a9c-ab60-d571034d7cea
-    m_ActionName: Gameplay/New action
+    m_ActionId: b73a73f7-ea2b-47bb-bdac-90741ddd7699
+    m_ActionName: Gameplay/Move[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right,/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ead98a4-965b-4f63-89fa-125b37660840
+    m_ActionName: Gameplay/Jump[/DualShock4GamepadHID/buttonSouth,/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df63c666-0808-4a26-bf89-55aeae189623
+    m_ActionName: Gameplay/Dash[/DualShock4GamepadHID/rightTrigger,/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9c8531c8-4011-4e77-8922-f1dda8f81f0a
+    m_ActionName: Gameplay/Throw[/DualShock4GamepadHID/buttonEast,/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2950650297457660663}
-        m_TargetAssemblyTypeName: PlayerSelectionController, Assembly-CSharp
+        m_TargetAssemblyTypeName: Selection.PlayerSelectionController, Assembly-CSharp
         m_MethodName: OnLeftArrow
         m_Mode: 0
         m_Arguments:
@@ -87,12 +99,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 85205ff4-3fbd-4cb9-95d1-ad3456f0f75b
-    m_ActionName: Selection/LeftArrow[/Keyboard/a,/Keyboard/leftArrow,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/leftStick/left]
+    m_ActionId: 524642d6-2718-4072-9b20-4ef443e9cd33
+    m_ActionName: Selection/LeftArrow[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/leftStick/left,/Keyboard/a,/Keyboard/leftArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2950650297457660663}
-        m_TargetAssemblyTypeName: PlayerSelectionController, Assembly-CSharp
+        m_TargetAssemblyTypeName: Selection.PlayerSelectionController, Assembly-CSharp
         m_MethodName: OnRightArrow
         m_Mode: 0
         m_Arguments:
@@ -103,10 +115,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 484544b2-b04a-45dd-9e4b-a19fa7e96840
-    m_ActionName: Selection/Right Arrow[/Keyboard/d,/Keyboard/rightArrow,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/right]
+    m_ActionId: 965ae75c-55b4-42e9-8b00-61287ac2223e
+    m_ActionName: Selection/RightArrow[/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/right,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: e6e5d5f9-eaa9-4f77-a181-54a8cf4ad819
+  m_DefaultActionMap: Selection
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

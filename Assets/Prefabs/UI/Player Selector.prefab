@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press A to Join
+  m_text: Press S/A to Join
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19ca9a6345c39194987f92e256803d6a, type: 2}
   m_sharedMaterial: {fileID: 5723232648570738604, guid: 19ca9a6345c39194987f92e256803d6a, type: 2}
@@ -259,12 +259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c3f395304ac10489d0efe1861b7a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters: {fileID: 11400000, guid: 2643bef612dfe354cbc5f0ca457a4330, type: 2}
+  _characters: {fileID: 0}
   _joined: {fileID: 4423401369354497082}
   _leftArrow: {fileID: 1452423495466238665}
   _rightArrow: {fileID: 3306451106210280979}
   _characterImage: {fileID: 8821889711495232406}
-  _available: 
 --- !u!1 &4423401369354497082
 GameObject:
   m_ObjectHideFlags: 0
