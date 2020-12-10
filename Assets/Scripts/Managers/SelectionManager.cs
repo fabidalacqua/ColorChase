@@ -43,11 +43,14 @@ namespace Selection
         {
             _playerInputManager = GetComponent<PlayerInputManager>();
             _playersInput = new List<PlayerInput>();
+
+            // Remove past variables
+            PlayerPrefs.DeleteAll();
         }
 
         private void SetPlayerPrefs()
         {
-            PlayerPrefs.SetInt("number_players", _playersInput.Count);
+            PlayerPrefs.SetInt("players_count", _playersInput.Count);
             for (int i = 0; i < _playersInput.Count; i++)
             {
                 PlayerPrefs.SetString("player_" + i + "_device", _playersInput[i].devices[0].layout);
