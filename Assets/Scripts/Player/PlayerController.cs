@@ -91,18 +91,19 @@ namespace Player
         {
             switch (collision.tag)
             {
-                case "Player":
+                case "Feet":
                     TakeDamage();
                     break;
                 case "Projectile":
                     TakeDamage(collision);
                     break;
                 case "Head":
-                    _playerMovement.Avoid();
+                        _playerMovement.Avoid();
                     break;
                 case "Item":
                     _playerItem.PickUp(collision.gameObject.GetComponent<Item>());
                     break;
+
             }
         }
 
