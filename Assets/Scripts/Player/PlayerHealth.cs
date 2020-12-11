@@ -14,6 +14,9 @@ namespace Player
         [SerializeField]
         private float _invulnerableTime = .05f;
 
+        [SerializeField]
+        private GameObject onDiedParticles;
+
         private int _health;
 
         private bool _isVulnerable = true;
@@ -56,10 +59,12 @@ namespace Player
 
                 if (_health <= 0)
                 {
+                    Instantiate(onDiedParticles, transform.position, Quaternion.identity);
                     AudioManager.Instance.Play("die");
 
                     if (onDied != null)
                         onDied.Invoke(playerIndex);
+                    
                 }
             }
         }

@@ -749,7 +749,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animation: {fileID: 718166658019471002}
   _maxHealth: 2
-  _invulnerableTime: 1
-  onDied:
-    m_PersistentCalls:
-      m_Calls: []
+  _invulnerableTime: 0.5
+  onDiedParticles: {fileID: 5988547605900909376, guid: 9e305ce3e88497141a12839092ccecce, type: 3}
+  playerIndex: -1
