@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 83eada7b42ee3ad4c8bbe1abc017766f, type: 2}
+    - target: {fileID: 5182100030989638500, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: onDiedParticles
+      value: 
+      objectReference: {fileID: 5988547605900909376, guid: 9e305ce3e88497141a12839092ccecce, type: 3}
     - target: {fileID: 6114133801069349226, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Sprite
       value: 
