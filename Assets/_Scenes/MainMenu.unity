@@ -6445,7 +6445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick up your orbe in the battlefield and get its color
+  m_text: Pick up your orb in the battlefield and get its color
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19ca9a6345c39194987f92e256803d6a, type: 2}
   m_sharedMaterial: {fileID: 5723232648570738604, guid: 19ca9a6345c39194987f92e256803d6a, type: 2}
