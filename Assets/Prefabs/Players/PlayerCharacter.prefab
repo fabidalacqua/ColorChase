@@ -118,7 +118,7 @@ MonoBehaviour:
     m_ActionId: 965ae75c-55b4-42e9-8b00-61287ac2223e
     m_ActionName: Selection/RightArrow[/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/right,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Selection
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

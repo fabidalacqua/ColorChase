@@ -52,6 +52,8 @@ public class MultiplayerManager : MonoBehaviour
 
     private void Start()
     {
+        // Gambiarra because this Input System is kind of buggy
+        SetDefaultControlScheme();
         // Instantiate all joined players
         InstantiatePlayersWithSetDevices();
     }
@@ -190,6 +192,17 @@ public class MultiplayerManager : MonoBehaviour
         _playersHUD[index].Setup(playerInput.gameObject);
         _playersFollowers[index].Setup(playerInput.gameObject);
         _playersScores[index].Setup(playerInput.gameObject);
+    }
+
+    private void SetDefaultControlScheme()
+    {
+        // Get control scheme from player 1
+        string controlScheme = PlayerPrefs.GetString("player_" + 0 + "_controlScheme", null);
+        // For each prefab set the default control scheme to the same as first player 
+        foreach (GameObject prefab in _playersPrefabs)
+        {
+            prefab.GetComponent<PlayerInput>().defaultControlScheme = controlScheme;
+        }
     }
 
     private void InstantiatePlayersWithSetDevices()

@@ -91,6 +91,10 @@ PrefabInstance:
       propertyPath: _dashSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 59552687051190063, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 487302711075079247, guid: 55d32f0c03e978049930fa5bf85cff1c, type: 3}
       propertyPath: m_Sprite
       value: 
